@@ -6,6 +6,7 @@ This set of estimates is fed in a segmentation algorithm (SMUCE) to estimate the
 
 ### Author (Requests)
 Please contact me in case of questions, comments, bug reports, etc... 
+
     Author: Philipp Hermann
     E-Mail: <philipp.hermann@jku.at>
 
