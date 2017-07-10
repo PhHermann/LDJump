@@ -25,7 +25,7 @@ The uploaded version on CRAN will install these packages automatically.
 
 ## Installation
 The ZIP-File of the package can be downloaded via "Clone or download". The installation is performed as usually in R via a the command: 
-text:: 
-install.packages("/PathToLDJump/LDJump_<version>.tar.gz", repos=NULL, type="source")
+
+    install.packages("/PathToLDJump/LDJump_<version>.tar.gz", repos=NULL, type="source")
 
 
