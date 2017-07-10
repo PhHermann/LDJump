@@ -38,7 +38,7 @@ After loading the Package in the Workspace one can use the main function *LDJump
     require(LDJump)
     LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDHat = "", format = "fasta", refName = NULL, start = NULL)
     
-Detailed descriptions of the main functions and all adjacent functions computing the recombination map can be found via 
+Detailed descriptions of the main functions and all adjacent functions computing the recombination map can be found via e.g.
 
     ?LDJump
     
