@@ -8,10 +8,12 @@ Here, we upload all necessary files for the example of an application of **LDJum
 
 The required R-command for the estimation of the recombination map with **LDJump** for the recombination map with a background rate of 0.01 is the following: 
 
+    ```R
     require(LDJump)
     results = LDJump("/pathToSample/HatLandscapeN16Len1000000Nrhs15_th0.01_540_1.fa", alpha = 0.05, segLength = 1000, 
     pathLDHat = "/pathToLDHat", format = "fasta", refName = NULL, thth = 0.005)
     plot(results)
+    ```
     
 With the *plot*-Function of the package *stepR* one will obtain the estimated map with the estimated recombination rates plotted on the y-axis and the according segment number on the x-axis. 
 
