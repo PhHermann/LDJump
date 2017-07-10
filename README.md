@@ -41,4 +41,4 @@ Detailed descriptions of the main functions and all adjacent functions computing
 
     ?LDJump
     
-An example with files can be found in **Examples**. 
+An example with files can be found in **Examples**. We provide a set of Lookup-Tables of LDHAt in **Lookup Tables**. 
