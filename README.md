@@ -27,7 +27,7 @@ This unix package makes use of several functions of other R-packages listed as f
 The uploaded version on CRAN will install these packages automatically. 
 
 ## Installation
-The most recent version of **LDJump** is contained in the folder *Sources*. The ZIP-File of the package can be downloaded via "Clone or download". The installation is performed as usually in R via a the command: 
+The most recent version of **LDJump** is contained in *[Sources](./Sources)*. The ZIP-File of the package can be downloaded via "Clone or download". The installation is performed as usually in R via a the command: 
 
     install.packages("/PathToLDJump/LDJump_<version>.tar.gz", repos=NULL, type="source")
 
@@ -42,4 +42,4 @@ Detailed descriptions of the main functions and all adjacent functions computing
 
     ?LDJump
     
-An example with files can be found in **[Example](./Example)**. We provide a set of Lookup-Tables of LDHat in **[Lookup Tables](./Lookups)**. 
+An example with files can be found in *[Example](./Example)*. We provide a set of Lookup-Tables of LDHat in *[Lookup Tables](./Lookups)*. 
