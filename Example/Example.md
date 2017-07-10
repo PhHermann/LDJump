@@ -7,7 +7,7 @@ Here, we upload all necessary files for the example of an application of **LDJum
 
 The required R-command for the estimation of the recombination map with **LDJump** is the following: 
 
-results = LDJump("/pathToSample/TSI_CH21_41187000_41290679.fa", alpha = 0.05, segLength = 1000, pathLDHat = "/pathToLDHat",
+    results = LDJump("/pathToSample/TSI_CH21_41187000_41290679.fa", alpha = 0.05, segLength = 1000, pathLDHat = "/pathToLDHat",
                 format = "fasta", refName = NULL, thth = 0.005)
 
 
