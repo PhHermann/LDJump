@@ -33,7 +33,7 @@ The ZIP-File of the package can be downloaded via "Clone or download". The insta
 
 ## Usage
 
-After loading the Package in the Workspace one can use the main function *LDJump* in order to estimate the variable recombination rate for the population of interest. We recommend to use **LDJump** with the population in *fasta*-Format. Alternatively, restructuring of *vcf*-Files is also possible with a implemented function *vcfR_to_fasta*. : 
+After loading the Package in the Workspace one can use the main function *LDJump* in order to estimate the variable recombination rate for the population of interest. We recommend to use **LDJump** with the population in *fasta*-Format. Alternatively, restructuring of *vcf*-Files is also possible with a implemented function *vcfR_to_fasta*. Therefore, we used the reference sequence from <http://phase3browser.1000genomes.org/Homo_sapiens> for our example: 
 
     require(LDJump)
     LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDHat = "", format = "fasta", refName = NULL, start = NULL)
