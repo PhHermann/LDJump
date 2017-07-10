@@ -2,7 +2,7 @@
 
 Here, we upload all necessary files for the example of an application of **LDJump**. 
 
-* [SimulatedPopulations.zip](https://github.com/PhHermann/LDJump/blob/master/Example/SimulatedPopulations.zip)*: This file contains three different simulation setups of 16 individuals (=sequences) with background rates of 0.001, 0.0054, and 0.001. This setup contains 15 *Hotspots* of 8 to 40 folds of the background rates evenly distributed across the sequence. 
+* [SimulatedPopulations.zip](https://github.com/PhHermann/LDJump/blob/master/Example/SimulatedPopulations.zip): This file contains three different simulation setups of 16 individuals (=sequences) with background rates of 0.001, 0.0054, and 0.001. This setup contains 15 *Hotspots* of 8 to 40 folds of the background rates evenly distributed across the sequence. 
 [comment]:<TSI_Sample.zip This file contains the sample of 50 invidivuals of the Toscan (Italian) population of the 1000 Genomes project>
 * [Lookups.zip](https://github.com/PhHermann/LDJump/blob/master/Example/Lookups.zip): This file contains the lookup table of 100 sequences with a theta of 0.005. 
 
