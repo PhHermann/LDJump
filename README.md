@@ -4,6 +4,8 @@ It is a unix based program (with a necessary installation of LDHat (see <https:/
 First, the sequences are divided in short segments of user defined length. The recombination rate is estimated for every segment with a regression model. 
 This set of estimates is fed in a segmentation algorithm (SMUCE) to estimate the breakpoints of the recombination landscape.
 
+### Author (Requests)
+Please contact me in case of questions, comments, bug reports, etc... 
 Author: Philipp Hermann
 E-Mail: <philipp.hermann@jku.at>
 
@@ -28,4 +30,15 @@ The ZIP-File of the package can be downloaded via "Clone or download". The insta
 
     install.packages("/PathToLDJump/LDJump_<version>.tar.gz", repos=NULL, type="source")
 
+## Usage
 
+After loading the Package in the Workspace one can use the main function *LDJump* in order to estimate the variable recombination rate for the population of interest. We recommend to use **LDJump** with the population in *fasta*-Format. Alternatively, restructuring of *vcf*-Files is also possible with a implemented function *vcfR_to_fasta*. : 
+
+    require(LDJump)
+    LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDHat = "", format = "fasta", refName = NULL, start = NULL)
+    
+Detailed descriptions of the main functions and all adjacent functions computing the recombination map can be found via 
+
+    ?LDJump
+    
+An example with files can be found in **Examples**. 
