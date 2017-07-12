@@ -49,3 +49,5 @@ Detailed descriptions of the main functions and all adjacent functions computing
 ```
 
 An example with files can be found in *[Example](./Example)*. We provide a set of Lookup-Tables of LDHat in *[Lookup Tables](./Lookups)*. 
+
+We also included an logical parameter *constant* in **LDJump**, which is *FALSE* by default to estimate varaible recombination rates. In case that *constant* is set to *TRUE*, **LDJump** will provide an constant recombination rate estimator of the whole sequence. 
