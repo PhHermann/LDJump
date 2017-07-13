@@ -11,7 +11,7 @@ Please contact me in case of questions, comments, bug reports, etc...
     E-Mail: philipp.hermann@jku.at
 
 ## Dependencies
-This package makes use of several functions of other R-packages, as well as of [LDHat](<https://github.com/auton1/LDhat>) listed as follows: 
+This package makes use of several functions of other R-packages, as well as of [LDhat](<https://github.com/auton1/LDhat>) listed as follows: 
 
 * Unix Operating System
 * R (>= 2.10)
@@ -23,6 +23,7 @@ This package makes use of several functions of other R-packages, as well as of [
 * seqinr (>= 3.1-3)
 * quantreg
 * vcfR (>= 1.5.0)
+* LDhat (2.2)
 
 The uploaded version on CRAN will install these packages automatically. 
 
