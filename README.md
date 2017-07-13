@@ -10,7 +10,7 @@ Please contact me in case of questions, comments, bug reports, etc...
     Author: Philipp Hermann
     E-Mail: philipp.hermann@jku.at
 
-## Dependencies
+## Dependencies & System Requirements
 This package makes use of several functions of other R-packages, as well as of [LDhat](<https://github.com/auton1/LDhat>) listed as follows: 
 
 * Unix Operating System
