@@ -57,7 +57,7 @@ An example with files can be found in *[Example](./Example)*. We provide a set o
 ```R
 require(LDJump)
 LDJump(seqName, alpha = c(0.1, 0.05, 0.01), segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, 
-       thth = 0.005, constant = F)
+       thth = 0.01, constant = F)
 ```
 We also included a logical parameter *constant* in **LDJump**, which is *FALSE* by default to estimate variable recombination rates. In the case that *constant* is set to *TRUE*, **LDJump** will provide a constant recombination rate estimator of the whole sequence. 
 
