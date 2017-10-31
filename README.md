@@ -41,7 +41,7 @@ After loading the package in the workspace one can use the main function *LDJump
 ```R
 require(LDJump)
 LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, 
-       thth = 0.005, constant = F)
+       thth = 0.01, constant = F)
 ```
 
 Detailed descriptions of the main functions and all adjacent functions computing the recombination map can be found via e.g.
