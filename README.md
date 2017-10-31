@@ -52,5 +52,14 @@ Detailed descriptions of the main functions and all adjacent functions computing
 
 An example with files can be found in *[Example](./Example)*. We provide a set of Lookup-Tables of LDhat in *[Lookup Tables](./Lookups)*. 
 
+**LDJump** can also be used under a set of type I error probabilities alpha. Therefore, the parameter *alpha* needs to be fed with a vector of values such as:
+
+```R
+require(LDJump)
+LDJump(seqName, alpha = c(0.1, 0.05, 0.01), segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, 
+       thth = 0.005, constant = F)
+```
 We also included a logical parameter *constant* in **LDJump**, which is *FALSE* by default to estimate variable recombination rates. In the case that *constant* is set to *TRUE*, **LDJump** will provide a constant recombination rate estimator of the whole sequence. 
+
+A logical parameter *recale* enables to transform the sequence positions to the unit interval if set to *TRUE*.
 
