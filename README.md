@@ -41,7 +41,7 @@ After loading the package in the workspace one can use the main function *LDJump
 ```R
 require(LDJump)
 LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, 
-       thth = 0.01, constant = F)
+       thth = 0.01, constant = F, status = T)
 ```
 
 Detailed descriptions of the main functions and all adjacent functions computing the recombination map can be found via e.g.
@@ -63,3 +63,4 @@ We also included a logical parameter *constant* in **LDJump**, which is *FALSE* 
 
 A logical parameter *rescale* enables to transform the sequence positions to the unit interval if set to *TRUE*.
 
+A logical parameter *status* prints the current status of the calculated segment on screen if set to *TRUE*. 
