@@ -6,7 +6,7 @@ Here, we upload all necessary files for the example of an application of **LDJum
 <TSI_Sample.zip This file contains the sample of 50 invidivuals of the Toscan (Italian) population of the 1000 Genomes project>
 * [Lookups.zip](https://github.com/PhHermann/LDJump/blob/master/Example/Lookups.zip): This file contains the lookup table of 100 sequences with a theta of 0.005. 
 
-The required R-command for the estimation of the recombination map with **LDJump** for the recombination map with a background rate of 0.01 is the following: 
+The required R-command for the estimation of the recombination map with **LDJump** for the recombination map with a background rate of 0.054 is the following: 
 
 ```R
 require(LDJump)
