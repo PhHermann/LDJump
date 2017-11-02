@@ -17,5 +17,5 @@ plot(results)
     
 With the *plot*-Function of the package *stepR* one will obtain the estimated map with the estimated recombination rates plotted on the y-axis and the according segment number on the x-axis. 
 
-Note: Both ZIP-Files have to be unzipped before usage in the R-function *LDJump*. 
+Note: Both ZIP-Files have to be unzipped before usage in the R-function *LDJump*. Runtime of one of these examples will be at least one hour. 
 
