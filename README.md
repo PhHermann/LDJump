@@ -61,5 +61,5 @@ LDJump(seqName, alpha = c(0.1, 0.05, 0.01), segLength = 1000, pathLDhat = "", fo
 ```
 We also included a logical parameter *constant* in **LDJump**, which is *FALSE* by default to estimate variable recombination rates. In the case that *constant* is set to *TRUE*, **LDJump** will provide a constant recombination rate estimator of the whole sequence. 
 
-A logical parameter *recale* enables to transform the sequence positions to the unit interval if set to *TRUE*.
+A logical parameter *rescale* enables to transform the sequence positions to the unit interval if set to *TRUE*.
 
