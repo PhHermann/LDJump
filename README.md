@@ -63,4 +63,4 @@ We also included a logical parameter *constant* in **LDJump**, which is *FALSE* 
 
 A logical parameter *rescale* enables to transform the sequence positions to the unit interval if set to *TRUE*.
 
-A logical parameter *status* prints the current status of the calculated segment on screen if set to *TRUE*. 
+A logical parameter *status*, which is *TRUE* by default, prints the current status of the calculated segment on screen. 
