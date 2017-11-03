@@ -50,7 +50,7 @@ Detailed descriptions of the main functions and all adjacent functions computing
 ?LDJump
 ```
 
-An example with files can be found in *[Example](./Example)*. We provide a set of Lookup-Tables of LDhat in *[Lookup Tables](./Lookups)*. 
+We provide examples with files in *[Example](./Example)* in addition to a set of Lookup-tables of LDhat in *[Lookup Tables](./Lookups)*. 
 
 **LDJump** can also be used under a set of type I error probabilities alpha. Therefore, the parameter *alpha* needs to be fed with a vector of values such as:
 
