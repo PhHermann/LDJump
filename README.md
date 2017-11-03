@@ -25,7 +25,7 @@ This package makes use of several functions of other R-packages, as well as of [
 * vcfR (>= 1.5.0)
 * LDhat (2.2)
 
-The uploaded version on CRAN will install these packages automatically. 
+The uploaded version on CRAN will install the *R*-packages automatically. [LDhat](<https://github.com/auton1/LDhat>) as well as the function **dos2unix** neeed to be installed too. 
 
 ## Installation
 The most recent version of **LDJump** is contained in *[Sources](./Sources)*. The ZIP-File of the package can be downloaded via "Clone or download". The installation is performed as usually in R via a the command: 
