@@ -12,10 +12,17 @@ The required R-command for the estimation of the recombination map with **LDJump
 require(LDJump)
 results = LDJump("/pathToSample/HatLandscapeN16Len1000000Nrhs15_th0.01_540_1.fa", alpha = 0.05, segLength = 1000, 
 pathLDhat = "/pathToLDhat", format = "fasta", refName = NULL, thth = 0.01)
-plot(results)
+postscript("Results.eps", horiz = F)
+plot(results[[1]], xlab = "Segments", ylab = "Estimated Recombination Rate", main = "Estimated recombination map with LDJump")
+dev.off()
+
 ```
+
     
-With the *plot*-Function of the package *stepR* one will obtain the estimated map with the estimated recombination rates plotted on the y-axis and the according segment number on the x-axis. 
+With the *plot*-Function of the package *stepR* one will obtain the estimated map with the estimated recombination rates plotted on the y-axis and the according segment number on the x-axis. The *postscript* and *dev.off* commands before and after plotting the results, respectively, will save the result in EPS-format. 
+
+**LDJump** returns a list of 7 elements which contain the estimated recombination map, the constant estimates per segment, the calculated summary statistis, the type I error probability used, the sample size, the sequence length and th e segment lenght used. 
+For a constant recombination rate estimation, only the latter six elements will be returned. 
 
 Notes: 
 * Both ZIP-Files have to be unzipped before usage in the R-function *LDJump*. 
