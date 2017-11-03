@@ -25,8 +25,7 @@ This package makes use of several functions of other R-packages, as well as of [
 * vcfR (>= 1.5.0)
 * LDhat (2.2)
 
-The uploaded version in *[Sources](./Sources)* and the listed packages need to be installed manually. [LDhat](<https://github.com/auton1/LDhat>) as well as the function *dos2unix* neeed to be installed too. Moreover, the function *sed* is used within the package and needs to be installed. For OS X users, one can install the gsed commands and manipulate this command such that **LDJump** will operate:
-
+The uploaded version in *[Sources](./Sources)* and the listed packages need to be installed manually. [LDhat](<https://github.com/auton1/LDhat>) as well as the function *dos2unix* neeed to be installed too. 
 
 
 ## Installation
