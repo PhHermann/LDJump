@@ -27,5 +27,5 @@ For a constant recombination rate estimation only the latter six elements are re
 Notes: 
 * Both ZIP-Files have to be unzipped before usage in the R-function *LDJump*. 
 * Runtime of one of these examples will be at least one hour. 
-* Beware that created files such as **resLDHats_pairwise_main.txt** have to be either moved to a different location or deleted because restaring LDJump (on the same or a different example). The program appends new results to aforenamed file-names and would then not operate as it is designed to do. 
+* Beware that created files such as **resLDHats_pairwise_main.txt** have to be either moved to a different location or deleted because restaring LDJump (on the same or a different example). The program appends new results to aforenamed file-names and would then not operate as it is designed to do. Hence, we recommend for usage of *LDJump* in parallel to create directories and start *LDJump* separately from these directories. 
 
