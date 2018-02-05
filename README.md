@@ -61,6 +61,11 @@ require(LDJump)
 LDJump(seqName, alpha = c(0.1, 0.05, 0.01), segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, 
        start = NULL, thth = 0.01, constant = F, status = T, cores = 1)
 ```
+
+**LDJump** is designed to estimate recombination rates from segments containing information (by SNPs). Therefore, the program checks for the given segment lengths, whether there will be segments without SNPs. In case yes, the program will inform the user and ask for input based on the two options: 
+* "n": **LDJump** will be stopped and the user should retry with a larger segment length. 
+* "y": **LDJump** will continue and impute the recombination rate of the segment without SNPs with a weighted mean of adjacent segments. 
+
 We also included a logical parameter *constant* in **LDJump**, which is *FALSE* by default to estimate variable recombination rates. In the case that *constant* is set to *TRUE*, **LDJump** will provide a constant recombination rate estimator of the whole sequence. 
 
 A logical parameter *rescale* enables to transform the sequence positions to the unit interval if set to *TRUE*.
