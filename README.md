@@ -24,6 +24,7 @@ This package makes use of several functions of other R-packages, as well as of [
 * quantreg
 * vcfR (>= 1.5.0)
 * LDhat (2.2)
+* snow
 
 The uploaded version in *[Sources](./Sources)* and the listed packages need to be installed manually. Notice that **Biostrings** needs to be installed via [Bioconductor](<http://bioconductor.org/packages/release/bioc/html/Biostrings.html>).  [LDhat](<https://github.com/auton1/LDhat>) as well as the functions *dos2unix* and *awk* neeed to be installed too. 
 
@@ -42,7 +43,7 @@ After loading the package in the workspace one can use the main function *LDJump
 ```R
 require(LDJump)
 LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, 
-       thth = 0.01, constant = F, status = T)
+       thth = 0.01, constant = F, status = T, cores = 1)
 ```
 
 Detailed descriptions of the main functions and all adjacent functions computing the recombination map can be found via e.g.
@@ -58,10 +59,12 @@ We provide examples with files in *[Example](./Example)* in addition to a set of
 ```R
 require(LDJump)
 LDJump(seqName, alpha = c(0.1, 0.05, 0.01), segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, 
-       thth = 0.01, constant = F)
+       thth = 0.01, constant = F, status = T, cores = 1)
 ```
 We also included a logical parameter *constant* in **LDJump**, which is *FALSE* by default to estimate variable recombination rates. In the case that *constant* is set to *TRUE*, **LDJump** will provide a constant recombination rate estimator of the whole sequence. 
 
 A logical parameter *rescale* enables to transform the sequence positions to the unit interval if set to *TRUE*.
 
 A logical parameter *status*, which is *TRUE* by default, prints the current status of the calculated segment on screen. 
+
+Currently, we only recommend to use cores with either 1 or 2, which reflects the number of cores on which **LDJump** is run. We are working on a more powerful version to apply **LDJump** on more than 2 cores. Note that *cores* can be used with integers larger than 2, but not in every of our examples the computation was also error free. Therefore, we recommend the users to try under which number of cores **LDJump** will run without any problems. 
