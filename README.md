@@ -74,4 +74,4 @@ A logical parameter *status*, which is *TRUE* by default, prints the current sta
 
 An integer parameter *cores* enables to parallelize **LDJump**. For small sequences we do not recommend to parallelize **LDJump** on more than two cores but for larger sequences several cores can be used. 
 
-A logical parameter *delete* will delete existing files from previous computations of **LDJump**. This deletion is necessary, especially of the *resLDHats_pairwise_main.txt* file. 
+A logical parameter *delete* will delete existing files from previous computations of **LDJump**. This deletion is necessary, especially of the *resLDHats_pairwise_main.txt* and *Sums_part_main.txt" file. 
