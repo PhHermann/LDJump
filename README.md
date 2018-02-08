@@ -72,4 +72,4 @@ A logical parameter *rescale* enables to transform the sequence positions to the
 
 A logical parameter *status*, which is *TRUE* by default, prints the current status of the calculated segment on screen. 
 
-Currently, we only recommend to use *cores* with either 1 or 2, which reflects the number of cores on which **LDJump** is run. Note that *cores* can be used with integers larger than 2, but not in every of our examples the computation was also error free. Therefore, we recommend the users to try under which number of cores **LDJump** will run without any problems. We are working on a solution for *cores*. 
+An integer parameter *cores* enables to parallelize **LDJump**. For small sequences we do not recommend to parallelize **LDJump** on more than two cores but for larger sequences several cores can be used. 
