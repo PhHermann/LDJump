@@ -72,4 +72,4 @@ A logical parameter *rescale* enables to transform the sequence positions to the
 
 A logical parameter *status*, which is *TRUE* by default, prints the current status of the calculated segment on screen or to the file *LDJump_Status.txt* in case of parallelization. 
 
-An integer parameter *cores* enables to parallelize **LDJump**, where the parameter equals the number of cores on which **LDJumm** should run. 
+An integer parameter *cores* enables to parallelize **LDJump**, where the parameter equals the number of cores on which **LDJump** should run. 
