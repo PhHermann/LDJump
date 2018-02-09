@@ -43,7 +43,7 @@ After loading the package in the workspace one can use the main function *LDJump
 ```R
 require(LDJump)
 LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, 
-       thth = 0.01, constant = F, status = T, cores = 1, delete = T)
+       thth = 0.01, constant = F, status = T, cores = 1)
 ```
 
 Detailed descriptions of the main functions and all adjacent functions computing the recombination map can be found via e.g.
@@ -59,7 +59,7 @@ We provide examples with files in *[Example](./Example)* in addition to a set of
 ```R
 require(LDJump)
 LDJump(seqName, alpha = c(0.1, 0.05, 0.01), segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, 
-       start = NULL, thth = 0.01, constant = F, status = T, cores = 1, delete = T)
+       start = NULL, thth = 0.01, constant = F, status = T, cores = 1)
 ```
 
 **LDJump** is designed to estimate recombination rates from segments containing information (by SNPs). Therefore, the program checks all segments (based on the given segment lengths) for the number of SNPS. In case of segments without SNPs, the program will inform the user and ask for input providing the following two options: 
@@ -70,8 +70,6 @@ We also included a logical parameter *constant* in **LDJump**, which is *FALSE* 
 
 A logical parameter *rescale* enables to transform the sequence positions to the unit interval if set to *TRUE*.
 
-A logical parameter *status*, which is *TRUE* by default, prints the current status of the calculated segment on screen. 
+A logical parameter *status*, which is *TRUE* by default, prints the current status of the calculated segment on screen or to the file *LDJump_Status.txt* in case of parallelization. 
 
-An integer parameter *cores* enables to parallelize **LDJump**. For small sequences we do not recommend to parallelize **LDJump** on more than two cores but for larger sequences several cores can be used. 
-
-A logical parameter *delete* will delete existing files from previous computations of **LDJump**. This deletion is necessary, especially of the *resLDHats_pairwise_main.txt* and *Sums_part_main.txt" file. 
+An integer parameter *cores* enables to parallelize **LDJump**, where the parameter equals the number of cores on which **LDJumm** should run. 
