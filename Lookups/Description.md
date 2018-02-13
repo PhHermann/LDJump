@@ -1,4 +1,4 @@
-# Lookup Tables of LDHat
+# Lookup Tables of LDhat
 
 This folder contains a ZIP file of several lookup-tables necessary for the computation of **LDJump**. 
 These files differ in sample sizes and theta. The path of the lookup tables is set as 
