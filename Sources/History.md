@@ -1,6 +1,6 @@
 ## Source History
 
-The most recent version of LDJump is 0.1.3 and can be downloaded in this folder. 
+The most recent version of LDJump is 0.1.8 and can be downloaded in this folder. 
 
 ### Update Version 0.1.1.
 The functions *LDJump* and *getSmuce* are extended with a parameter *constant*. 
@@ -18,3 +18,15 @@ We also added an optional parameter to rescale the sequence length to the unit i
 
 ### Update Version 0.1.4
 Fixed minor bugs and paths to LDhat. Also an optional parameter is added which prints the current status of the calculated segment on screen. Example files are also updated. 
+
+### Update Version 0.1.5
+Added the option to impute recombination rates of segments having less than 2 SNPs. User input is required to continue the computation with **LDJump**. 
+
+### Update Version 0.1.6
+Fixed minor bug and added option to *fgt_rrate_dpr.R*. 
+
+### Update Version 0.1.7
+**LDJump** can now be applied in parallel on several cores. Therefore, an additional parameter is added to the command which reflects the integer number of cores on which the recombination map should be estimated. 
+
+### Update Version 0.1.8
+Thanks to user request we have added the option to ignore the user input in case of segments lacking SNPs. Moreover, slight adaptions to commands using the working directory were made. 
