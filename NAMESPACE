@@ -1,0 +1,36 @@
+exportPattern("^[[:alpha:]]+")
+
+importFrom(stepR, stepFit)
+importFrom(ape, read.dna)
+importFrom(ape, write.dna)
+importFrom(ape, seg.sites)
+importFrom(ape, read.FASTA)
+importFrom(vcfR, read.vcfR)
+importFrom(vcfR, vcfR2DNAbin)
+importFrom(Biostrings, readDNAStringSet)
+importFrom(Biostrings, subseq)
+importFrom(Biostrings, width)
+importFrom(Biostrings, writeXStringSet)
+importFrom(adegenet, DNAbin2genind)
+importFrom(adegenet, Hs)
+importFrom(adegenet, genind2df)
+importFrom(genetics, diseq)
+importFrom(genetics, genotype)
+importFrom(utils, combn)
+importFrom(utils, read.table)
+importFrom(stats, predict)
+importFrom(stats, weighted.mean)
+importFrom(snow, makeCluster)
+importFrom(snow, parSapply)
+importFrom(snow, stopCluster)
+importFrom(data.table, rbindlist)
+import(quantreg)
+import(seqinr)
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+Package: LDJump
+Type: Package
+Title: Estimating Variable Recombination Rates from Population Genetic Data
+Version: 0.1.8
+Imports: adegenet (>= 2.0.1), 
+   ape, 
+   genetics (>= 1.3.8.1), 
+   Biostrings (>= 2.38.4),
+	 stepR (>= 2.0.1), 
+   vcfR (>= 1.5.0), 
+   snow,
+   data.table
+Depends: R (>= 2.10),
+	 seqinr (>= 3.1-3),
+	 quantreg
+Author: Philipp Hermann, Andreas Futschik
+Maintainer: Philipp Hermann <philipp.hermann@jku.at>
+Description: This package estimates variable recombination rates from population genetic data. It is a unix based program (with a necessary installation of LDhat), able to estimate the recombination map of sequences in fasta and vcf format. Sequences are divided in short segments of user defined length. The recombination rate is estimated for every segment with a regression model. This set of estimates is fed in a segmentation algorithm (SMUCE) to estimate the breakpoints of the recombination landscape.
+License: GPL-2
+Encoding: UTF-8
+LazyData: TRUE
+RoxygenNote: 6.0.1
+BugReports: https://github.com/PhHermann/LDJump/
+SystemRequirements: Unix Operating System, LDhat (Version 2.2), dos2unix, awk
+	
