@@ -16,7 +16,7 @@ Depends: R (>= 2.10),
 Author: Philipp Hermann, Andreas Futschik
 Maintainer: Philipp Hermann <philipp.hermann@jku.at>
 Description: This package estimates variable recombination rates from population genetic data. It is a unix based program (with a necessary installation of LDhat), able to estimate the recombination map of sequences in fasta and vcf format. Sequences are divided in short segments of user defined length. The recombination rate is estimated for every segment with a regression model. This set of estimates is fed in a segmentation algorithm (SMUCE) to estimate the breakpoints of the recombination landscape.
-License: GPL-2
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
 RoxygenNote: 6.0.1
