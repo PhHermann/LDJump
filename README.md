@@ -38,7 +38,6 @@ R CMD INSTALL LDJump
 ``` 
 
 Using *R* one can also install the *.tar.gz* file with the following command: 
-
 ```R
 install.packages("/PathToLDJump/LDJump_<version>.tar.gz", repos=NULL, type="source")
 ```
