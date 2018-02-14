@@ -30,7 +30,14 @@ The uploaded version in *[Sources](./Sources)* and the listed packages need to b
 
 
 ## Installation
-The most recent version of **LDJump** is contained in *[Sources](./Sources)*. The ZIP-File of the package can be downloaded via "Clone or download". The installation is performed as usually in R via a the command: 
+The ZIP-File of the package can be downloaded via "Clone or download" as well as the command line: 
+
+```markdown
+git clone https://github.com/PhHermann/LDJump.git
+R CMD INSTALL LDJump
+``` 
+
+Via *R* one can also install the .tag.gz file via the command: 
 
 ```R
 install.packages("/PathToLDJump/LDJump_<version>.tar.gz", repos=NULL, type="source")
