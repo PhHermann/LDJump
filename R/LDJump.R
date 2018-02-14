@@ -1,6 +1,5 @@
 LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, thth = 0.005, constant = F, rescale = F, status = T, polyThres = 0, cores = 1, accept = F) {
-  if(pathLDhat == "") {pathLDhat = paste0(system("locate LDhat-master | head -n 1", intern = T), "/")}
-  if(length(pathLDhat) == 0) {stop("Beware that this package requires LDhat to be installed for usage.")}
+  if(pathLDhat == "") {stop("Please provide the path of LDhat. Beware that this package requires LDhat to be installed for usage.")}
   if(seqName == "") {stop("Please provide the path of the sequence files in fasta/vcf format.")}
   if(format == "vcf") {
     vcfR_to_fasta(seqName, refName, ext.ind = T, cons = F, ext.haps = T, start = start)
