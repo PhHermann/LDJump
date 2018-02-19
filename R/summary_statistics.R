@@ -22,8 +22,15 @@ summary_statistics = function(x,s,segLength,segs,seqName,nn,thth,cor = 1,pathLDh
     cat("Maximum at 4Ner(region) = 0.000 : Lk = NA\n", file = paste0("resLDHats_pairwise_main_", x, ".txt"),append=T)
   }
   if(status) {
-    cat(paste(x, " of ", segs, " Segments calculated\n", sep = ""), file = "LDJump_Status.txt", append = T)
-    print(paste(x, " of ", segs, " Segments calculated", sep = ""))
+    # nrow(read.table(file = "LDJump_Status.txt"))
+    if(!file.exists("LDJump_Status.txt")) {
+      cat(paste0(round(1/segs*100, 2), "% of Segments calculated\n"), file = "LDJump_Status.txt", append = T)
+      print(paste0(round(1/segs*100, 2), "% of Segments calculated"))
+    } else {
+      cat(paste0(round((nrow(read.table("LDJump_Status.txt"))+1)/segs*100, 2), "% of Segments calculated\n"), file = "LDJump_Status.txt", append = T)
+      print(paste0(round((nrow(read.table("LDJump_Status.txt"))+1)/segs*100, 2), "% of Segments calculated"))
+    }
+
   }
   return(c(stats, hahe))
 }
