@@ -4,10 +4,10 @@ LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", 
   if(format == "vcf") {
     vcfR_to_fasta(seqName, refName, ext.ind = T, cons = F, ext.haps = T, start = start)
   }
-    s = Biostrings::readDNAStringSet(seqName); # s = s[1:100]
+    s = Biostrings::readDNAStringSet(seqName);
     nn = length(s)
     if(constant) {
-      ll = segLegnth = width(s)[1]
+      ll = segLength = width(s)[1]
     }
     ll = floor(width(s)[1]/segLength)*segLength
     segs = ll/segLength
