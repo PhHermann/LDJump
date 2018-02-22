@@ -6,10 +6,10 @@ LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", 
   }
     s = Biostrings::readDNAStringSet(seqName); # s = s[1:100]
     nn = length(s)
-    ll = floor(width(s)[1]/segLength)*segLength
     if(constant) {
-      segLength = ll
+      ll = segLegnth = width(s)[1]
     }
+    ll = floor(width(s)[1]/segLength)*segLength
     segs = ll/segLength
     if(!check_continue(seqName, segs = segs, accept)) {return()}
     system(paste("dos2unix -q ", paste(find.package("LDJump"),"/exec/Sums_LDHat_pack.sh", sep=""), " --quiet", sep = ""))
