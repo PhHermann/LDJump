@@ -1,4 +1,4 @@
-LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, thth = 0.005, constant = F, rescale = F, status = T, polyThres = 0, cores = 1, accept = F) {
+LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, thth = 0.01, constant = F, rescale = F, status = T, polyThres = 0, cores = 1, accept = F) {
   if(pathLDhat == "") {stop("Please provide the path of LDhat. Beware that this package requires LDhat to be installed for usage.")}
   if(seqName == "") {stop("Please provide the path of the sequence files in fasta/vcf format.")}
   if(format == "vcf") {
@@ -6,11 +6,11 @@ LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", 
   }
     s = Biostrings::readDNAStringSet(seqName); # s = s[1:100]
     nn = length(s)
-    if(constant) {
-      segLength = nn
-    }
     ll = floor(width(s)[1]/segLength)*segLength
     segs = ll/segLength
+    if(constant) {
+      segLength = ll
+    }
     if(!check_continue(seqName, segs = segs, accept)) {return()}
     system(paste("dos2unix -q ", paste(find.package("LDJump"),"/exec/Sums_LDHat_pack.sh", sep=""), " --quiet", sep = ""))
     # help = t(sapply(1:segs,summary_statistics,s=s,segLength=segLength,segs = segs, thth=thth,seqName=seqName,nn=nn,pathLDhat = pathLDhat, status = status, polyThres = polyThres))
