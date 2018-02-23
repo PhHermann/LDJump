@@ -82,4 +82,4 @@ A logical parameter *status*, which is *TRUE* by default, prints the current sta
 
 An integer parameter *cores* enables to parallelize **LDJump**, where the parameter equals the number of cores on which **LDJump** should run. 
 
-A logical parameter *demography*, which is *FALSE* by default, enables to estimate the recombination rates using on a GAM which is based on simulated samples of populations undergoing demographic effects. 
+A logical parameter *demography*, which is *FALSE* by default, enables to estimate the recombination rates using a generalized additive regression model (GAM) which is based on simulated samples of populations undergoing demographic effects. 
