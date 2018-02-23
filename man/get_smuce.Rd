@@ -11,7 +11,7 @@ First, the recombination rates per segment are computed based on the regression 
     %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-get_smuce(help, segs, alpha, ll, quant = 0.35, rescale, constant)
+get_smuce(help, segs, alpha, ll, quant = 0.35, rescale, constant, demography)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -41,6 +41,9 @@ get_smuce(help, segs, alpha, ll, quant = 0.35, rescale, constant)
 }
   \item{constant}{
   an optional logical value: by default \code{FALSE} estimating variable recombination rates. If \code{TRUE}, the constant recombination rate for the full sequence is estimated.
+  }
+    \item{demography}{
+  an optional logical value: by default \code{FALSE} indicates that the recombination rate estimation is estimated under neutrality. If \code{TRUE}, the regression model estimated based on samples from populations under demography is used.
   }
 }
 %%\details{

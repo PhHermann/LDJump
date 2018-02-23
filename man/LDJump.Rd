@@ -10,9 +10,9 @@
 }
 \usage{
 LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "",
-       format = "fasta", refName = NULL, start = NULL, thth = 0.005,
+       format = "fasta", refName = NULL, start = NULL, thth = 0.01,
        constant = F, rescale = F, status = T, polyThres = 0,
-       cores = 1, accept = F)
+       cores = 1, accept = F, demography = F)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -61,6 +61,9 @@ LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "",
   }
   \item{accept}{
   an optional logical value: by default \code{FALSE} and \code{LDJump} checks for segments with less than 2 SNPs and requires user input to proceed. If set to \code{TRUE}, it is accepted that the rates for these segments are estimated via imputation.
+  }
+ \item{demography}{
+  an optional logical value: by default \code{FALSE} indicates that the recombination rate estimation is estimated under neutrality. If \code{TRUE}, the regression model estimated based on samples from populations under demography is used.
   }
 }
 %%\details{
