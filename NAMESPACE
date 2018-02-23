@@ -24,8 +24,10 @@ importFrom(snow, makeCluster)
 importFrom(snow, parSapply)
 importFrom(snow, stopCluster)
 importFrom(data.table, rbindlist)
+importFrom(pegas, tajima.test)
 import(quantreg)
 import(seqinr)
+
 
 
 

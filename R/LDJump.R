@@ -37,7 +37,7 @@ LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", 
     wath = sums[indices+2,2]/ll*segs
     vapw = sums[indices+5,2]/ll*segs
     help[,1] = help[,1]/ll*segs
-    colnames(help) = c("fgts", "rsqu", "ldpr", "hahe")
+    colnames(help) = c("fgts", "rsqu", "ldpr", "hahe", "tajd")
     colnames(apwd) = "apwd"; colnames(wath) = "wath"; colnames(vapw) = "vapw"
     # hats = read.table("resLDHats_pairwise_main.txt")[,5]/ll*segs
     # help = data.frame(cbind(help,apwd,wath,vapw,hats,haps), row.names = 1:nrow(help))

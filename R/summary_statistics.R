@@ -10,6 +10,7 @@ summary_statistics = function(x,s,segLength,segs,seqName,nn,thth,cor = 1,pathLDh
   if(length(ape::seg.sites(ape::read.FASTA(seqNamePart)))>1){
     system(paste(paste(find.package("LDJump"),"/exec/Sums_LDHat_pack.sh", sep=""), seqNamePart,nn,ex-ix+1,pathLDhat,thth,cor,x,sep=" "))
     samp = ape::read.dna(seqNamePart, as.matrix = T, format = "fasta") # seqNamePartHel
+    tajd = pegas::tajima.test(samp)$D
     temp = try(adegenet::DNAbin2genind(samp, polyThres = polyThres)); hahe = adegenet::Hs(temp);
     g2dftemp = adegenet::genind2df(temp)
     indices = t(combn(1:ncol(g2dftemp),2))
@@ -17,7 +18,7 @@ summary_statistics = function(x,s,segLength,segs,seqName,nn,thth,cor = 1,pathLDh
     if(ncol(helper) > 1) {stats = c(sum(helper[1,]),apply(cbind(sapply(1:(max(indices)-2),function(jj) rowMeans(helper[2:3,indices[,1]==jj])),helper[2:3,indices[,1]==max(indices-1)]),1,mean))}
     else {stats = helper}
   } else {
-    stats = rep(0,3); hahe = 0
+    stats = rep(0,3); hahe = 0; tajd = 0
     cat("Segregating sites=0\nAverage PWD=0\nWatterson theta=0\nTajima D statistic=0\nFu and Li D* statistic=0\nVariance PWD=0\n",file = paste0("Sums_part_main_", x, ".txt"),append=T)
     cat("Maximum at 4Ner(region) = 0.000 : Lk = NA\n", file = paste0("resLDHats_pairwise_main_", x, ".txt"),append=T)
   }
@@ -32,5 +33,5 @@ summary_statistics = function(x,s,segLength,segs,seqName,nn,thth,cor = 1,pathLDh
     }
 
   }
-  return(c(stats, hahe))
+  return(c(stats, hahe, tajd))
 }

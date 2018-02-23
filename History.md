@@ -30,3 +30,6 @@ Fixed minor bug and added option to *fgt_rrate_dpr.R*.
 
 ### Update Version 0.1.8
 Thanks to user request we have added the option to ignore the user input in case of segments lacking SNPs. Moreover, slight adaptions to commands using the working directory were made. 
+
+### Update Version 0.1.9
+We have also simulated under demographic effects and provide a regression model for this setup. This is implemented via an logical parameter *demography*, which will use this regression model if the recombination rates should be estimated under demographic effects. 

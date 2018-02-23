@@ -64,6 +64,7 @@ An integer which reflects the number of individuals (more precisely sequences) o
  This function returns a concatenated vector of two separately used vectors (scalars) of summary statistis as:
   \item{stats}{A vector of summary statistics. Returned with the value of hahe.}
   \item{hahe}{The haplotype heterozygosity of the considered segment. Returned with stats.}
+  \item{tajd}{Tajima's D. Only used in the regression model for demography.}
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
