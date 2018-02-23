@@ -49,7 +49,7 @@ After loading the package in the workspace one can use the main function *LDJump
 ```R
 require(LDJump)
 LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, 
-       thth = 0.01, constant = F, status = T, cores = 1, accept = F)
+       thth = 0.01, constant = F, status = T, cores = 1, accept = F, demography = F)
 ```
 
 Detailed descriptions of the main functions and all adjacent functions computing the recombination map can be found via e.g.
@@ -81,3 +81,5 @@ A logical parameter *rescale* enables to transform the sequence positions to the
 A logical parameter *status*, which is *TRUE* by default, prints the current status of the calculated segment on screen or to the file *LDJump_Status.txt* in case of parallelization. 
 
 An integer parameter *cores* enables to parallelize **LDJump**, where the parameter equals the number of cores on which **LDJump** should run. 
+
+A logical parameter *demography*, *FALSE* by default, enables to estimate the recombination rates using on a GAM which is based on simulated samples of populations undergoing demographic effects. 

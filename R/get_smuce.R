@@ -1,6 +1,7 @@
-get_smuce = function(help, segs, alpha,ll,quant=0.35,rescale,constant) { # removed: list.quantile.regs,
+get_smuce = function(help, segs, alpha,ll,quant=0.35,rescale,constant,demography=F) { # removed: list.quantile.regs,
   gam = 0.25; eps = 0
-  pr1 = predict(LDJump::mod.full,help); pr1[is.na(pr1)] = -1/gam;
+  if(!demography) {pr1 = predict(LDJump::mod.full,help)} else {pr1 = predict(LDJump::mod.full.demo,help)}
+  pr1[is.na(pr1)] = -1/gam;
   ind.q = which(seq(0.1, 0.5, by = 0.05) == quant)
   pr.cor = predict(LDJump::list.quantile.regs[[ind.q]], data.frame(x = pr1)); pr.cor = ifelse(pr.cor < -4, -4, pr.cor)
   pr.cor.nat = (pr.cor*gam+1)^(1/gam)-eps
