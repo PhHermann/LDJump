@@ -1,4 +1,4 @@
-LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, thth = 0.01, constant = F, rescale = F, status = T, polyThres = 0, cores = 1, accept = F, demography = F) {
+LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, thth = 0.01, constant = F, rescale = F, status = T, polyThres = 0, cores = 1, accept = F, demography = "") {
   if(pathLDhat == "") {stop("Please provide the path of LDhat. Beware that this package requires LDhat to be installed for usage.")}
   if(seqName == "") {stop("Please provide the path of the sequence files in fasta/vcf format.")}
   if(format == "vcf") {

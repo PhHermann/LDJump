@@ -42,9 +42,9 @@ get_smuce(help, segs, alpha, ll, quant = 0.35, rescale, constant, demography)
   \item{constant}{
   an optional logical value: by default \code{FALSE} estimating variable recombination rates. If \code{TRUE}, the constant recombination rate for the full sequence is estimated.
   }
-    \item{demography}{
-  an optional logical value: by default \code{FALSE} indicates that the recombination rate estimation is estimated under neutrality. If \code{TRUE}, the regression model estimated based on samples from populations under demography is used.
-  }
+ \item{demography}{
+  an optional character value: by default an empty string ("") indicates that the recombination rate estimation is estimated under neutrality. If \code{"b"} the regression model estimated based on samples from populations under a bottleneck is used. If \code{"g"} the regression model estimated based on samples from populations under population growth is used. If \code{"d"}, the regression model estimated based on samples from populations under demography (combination of samples of under growth and bottleneck) is used.
+}
 }
 %%\details{
 %%  ~~ If necessary, more details than the description above ~~
