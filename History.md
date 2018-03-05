@@ -33,3 +33,6 @@ Thanks to user request we have added the option to ignore the user input in case
 
 ### Update Version 0.1.9
 We have also simulated under demographic effects and provide a regression model for this setup. This is implemented via an logical parameter *demography*, which will use this regression model if the recombination rates should be estimated under demographic effects. 
+
+### Update Version 0.1.10
+We extend to the demographic scenarios from Version 0.1.9. Therefore, we provide regression models for samples under population growth and under a bottleneck separately. The parameter *demography* is a character, which uses either a scenario under constant population size (""), population growth ("g"), bottleneck ("b"), and population growth after a bottleneck ("c"). 
