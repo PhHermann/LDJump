@@ -1,7 +1,7 @@
 get_smuce = function(help, segs, alpha,ll,quant=0.35,rescale,constant,demography) { # removed: list.quantile.regs,
   gam = 0.25; eps = 0
   if(demography == "") {pr1 = predict(LDJump::mod.full,help)}
-  if(demography == "c"){pr1 = predict(LDJump::mod.full.demo,help)}
+  if(demography == "d"){pr1 = predict(LDJump::mod.full.demo,help)}
   if(demography == "b"){pr1 = predict(LDJump::mod.full.bot,help)}
   if(demography == "g"){pr1 = predict(LDJump::mod.full.growth,help)}
   pr1[is.na(pr1)] = -1/gam;
