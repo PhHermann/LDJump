@@ -72,7 +72,7 @@ LDJump(seqName, alpha = c(0.1, 0.05, 0.01), segLength = 1000, pathLDhat = "", fo
 * "n": **LDJump** will be stopped and the user should retry with a larger segment length. 
 * "y": **LDJump** will continue and impute the recombination rate of the segment without SNPs with a weighted mean of adjacent segments. 
 
-In order to avoid the user input and accept that **LDJump** imputes recombination rates for these segments, we have added the parameter *accept* (by default *FALSE), which should then be set to *TRUE*. 
+In order to avoid the user input and accept that **LDJump** imputes recombination rates for these segments, we have added the parameter *accept* (by default *FALSE*), which should then be set to *TRUE*. 
 
 We also included a logical parameter *constant* in **LDJump**, which is *FALSE* by default to estimate variable recombination rates. In the case that *constant* is set to *TRUE*, **LDJump** will provide a constant recombination rate estimator of the whole sequence. 
 
