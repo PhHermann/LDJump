@@ -1,5 +1,5 @@
 impute = function(data, index, two, segs) {
-  if(length(index) == 0) {return(data)}
+  if((length(index) == 0) || (length(index) == segs)) {return(data)}
   data.to.impute = sapply(index, get_impute_data, data, two = two, segs = segs)
   help.ind = which(colSums(apply(data.to.impute, 2, is.na))==0)
   if(length(help.ind) > 0) {
