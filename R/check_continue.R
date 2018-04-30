@@ -1,5 +1,5 @@
-check_continue = function(seqName, segs, accept) {
-  fasta = ape::read.FASTA(file = seqName)
+check_continue = function(seqName, segs, accept, format) {
+  if(format == "fasta") {fasta = ape::read.FASTA(file = seqName)} else {fasta = get(seqName)}
   lower.thres = seq(1,length(fasta[[1]])-1, by = length(fasta[[1]])/segs)
   upper.thres = c(lower.thres[-1], length(fasta[[1]]))
   thres = cbind(lower.thres, upper.thres)

@@ -7,8 +7,8 @@ LDJump = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pa
   if(format == "fasta") {
     s = Biostrings::readDNAStringSet(seqName)
   }
-  if(format == "DNAStringSet") {
-    s = get(seqName)
+  if(format == "DNABin") {
+    s = DNAStringSet(get(seqName))
   }
     nn = length(s)
     if(constant) {
