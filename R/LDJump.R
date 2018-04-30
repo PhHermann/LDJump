@@ -1,10 +1,15 @@
-LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, thth = 0.01, constant = F, rescale = F, status = T, polyThres = 0, cores = 1, accept = F, demography = F) {
-  if(pathLDhat == "") {stop("Please provide the path of LDhat. Beware that this package requires LDhat to be installed for usage.")}
+LDJump = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, thth = 0.01, constant = F, rescale = F, status = T, polyThres = 0, cores = 1, accept = F, demography = F) {
+  if(pathLDhat == "" && format == "fasta") {stop("Please provide the path of LDhat. Beware that this package requires LDhat to be installed for usage.")}
   if(seqName == "") {stop("Please provide the path of the sequence files in fasta/vcf format.")}
   if(format == "vcf") {
     vcfR_to_fasta(seqName, refName, ext.ind = T, cons = F, ext.haps = T, start = start)
   }
-    s = Biostrings::readDNAStringSet(seqName);
+  if(format == "fasta") {
+    s = Biostrings::readDNAStringSet(seqName)
+  }
+  if(format == "DNAStringSet") {
+    s = get(seqName)
+  }
     nn = length(s)
     if(constant) {
       ll = segLength = width(s)[1]
@@ -13,13 +18,13 @@ LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", 
     segs = ll/segLength
     if(!check_continue(seqName, segs = segs, accept)) {return()}
     system(paste("dos2unix -q ", paste(find.package("LDJump"),"/exec/Sums_LDHat_pack.sh", sep=""), " --quiet", sep = ""))
-    # help = t(sapply(1:segs,summary_statistics,s=s,segLength=segLength,segs = segs, thth=thth,seqName=seqName,nn=nn,pathLDhat = pathLDhat, status = status, polyThres = polyThres))
+    # helper = t(sapply(1:segs,summary_statistics,s=s,segLength=segLength,segs = segs, thth=thth,seqName=seqName,nn=nn,pathLDhat = pathLDhat, status = status, polyThres = polyThres))
     # haps = read.table(paste("Confs_part_main.txt",sep=""),sep = ":")[,2]/ll*segs/nn
     if(cores == 1) {
-      help = t(sapply(1:segs,summary_statistics,s=s,segLength=segLength,segs = segs, thth=thth,seqName=seqName,nn=nn,pathLDhat = pathLDhat, status = status, polyThres = polyThres))
+      helper = t(sapply(1:segs,summary_statistics,s=s,segLength=segLength,segs = segs, thth=thth,seqName=seqName,nn=nn,pathLDhat = pathLDhat, status = status, polyThres = polyThres))
     } else {
       cl <- makeCluster(cores, type = "SOCK")
-      help = t(parSapply(cl, 1:segs,summary_statistics,s=s,segLength=segLength,segs = segs, thth=thth,seqName=seqName,nn=nn,pathLDhat = pathLDhat, status = status, polyThres = polyThres))
+      helper = t(parSapply(cl, 1:segs,summary_statistics,s=s,segLength=segLength,segs = segs, thth=thth,seqName=seqName,nn=nn,pathLDhat = pathLDhat, status = status, polyThres = polyThres))
       stopCluster(cl)
     }
     l.files = list.files(pattern="Sums_part_main_")
@@ -36,19 +41,19 @@ LDJump = function(seqName = "", alpha = 0.05, segLength = 1000, pathLDhat = "", 
     apwd = sums[indices+1,2]/ll*segs
     wath = sums[indices+2,2]/ll*segs
     vapw = sums[indices+5,2]/ll*segs
-    help[,1] = help[,1]/ll*segs
-    colnames(help) = c("fgts", "rsqu", "ldpr", "hahe", "tajd")
+    helper[,1] = helper[,1]/ll*segs
+    colnames(helper) = c("fgts", "rsqu", "ldpr", "hahe", "tajd")
     colnames(apwd) = "apwd"; colnames(wath) = "wath"; colnames(vapw) = "vapw"
     # hats = read.table("resLDHats_pairwise_main.txt")[,5]/ll*segs
-    # help = data.frame(cbind(help,apwd,wath,vapw,hats,haps), row.names = 1:nrow(help))
-    help = data.frame(cbind(help,apwd,wath,vapw,hats), row.names = 1:nrow(help))
-    full.list = get_smuce(help, segs, alpha,ll,rescale = rescale, constant=constant, demography = demography)
+    # helper = data.frame(cbind(helper,apwd,wath,vapw,hats,haps), row.names = 1:nrow(help))
+    helper = data.frame(cbind(helper,apwd,wath,vapw,hats), row.names = 1:nrow(helper))
+    full.list = get_smuce(helper, segs, alpha, quant = quant, ll,rescale = rescale, constant=constant, demography = demography, nat = nat)
     if(!constant) {
       seq.full.cor = full.list[[1]]; pr.full.cor = full.list[[2]]; ind = full.list[[3]]
       if(length(ind) > 0) {warning(paste("Recombination rates were imputed for the following segments:", toString(ind), sep = ""))}
-      return(list("Estimated recombination map" = seq.full.cor, "Constant estimates:" = pr.full.cor, "Summary Statistics" = help, "alpha" = alpha, "Sample Size" = nn, "Sequence Length" = ll, "Segment Length" = segs, "Imputed Segments" = ind))
+      return(list("Estimated recombination map" = seq.full.cor, "Constant estimates:" = pr.full.cor, "Summary Statistics" = helper, "alpha" = alpha, "Sample Size" = nn, "Sequence Length" = ll, "Segment Length" = segs, "Imputed Segments" = ind))
     } else {
       pr.full.cor = full.list[[1]]
-      return(list("Constant estimates" = pr.full.cor, "Summary Statistics" = help, "alpha" = alpha, "Sample Size" = nn, "Sequence Length" = ll, "Segment Length" = segs))
+      return(list("Constant estimates" = pr.full.cor, "Summary Statistics" = helper, "alpha" = alpha, "Sample Size" = nn, "Sequence Length" = ll, "Segment Length" = segs))
     }
 }

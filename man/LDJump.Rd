@@ -9,7 +9,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "",
+LDJump(seqName, alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "",
        format = "fasta", refName = NULL, start = NULL, thth = 0.01,
        constant = F, rescale = F, status = T, polyThres = 0,
        cores = 1, accept = F, demography = "")
@@ -23,6 +23,10 @@ LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "",
   \item{alpha}{
   A value from the interval (0,1) for the type-I error probability \eqn{\alpha} used in the segmentation algorithm. We recommend to use 0.05. We enabled to estimate the recombination map efficiently (without recalculating all summary statistics) under several type-I errors when \code{LDJump} is applied with a vector of type-I error probabilities.
 }
+  \item{quant}{
+  A value between 0.1 and 0.5 with 0.05 distances in between which reflects the quantile used in the quantile regression. We recommend to use the 0.35 quantile which is the default value.
+%%     ~~Describe \code{quant} here~~
+}
   \item{segLength}{
 %%     ~~Describe \code{segLength} here~~
    An integer value for the length of the segments, provided by the user. The default value of 1000 is our recommended value (1kb). The number of resulting segments, based on the sequence length is calculated within the funtion.
@@ -32,7 +36,7 @@ LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "",
   }
 
   \item{format}{
-  A character string which can be either \code{fasta} or \code{vcf}. If \code{fasta} is used, the package will proceed with the computation of the recombination map. If \code{vcf}, the package will convert the data in \code{vcf} format to \code{fasta} format with the function \code{vcfR_to_fasta} and then proceed as in case \code{fasta}.
+  A character string which can be \code{fasta}, \code{vcf}, or \code{DNAStringSet}. If \code{fasta} is used, the package will proceed with the computation of the recombination map. If \code{vcf}, the package will convert the data in \code{vcf} format to \code{fasta} format with the function \code{vcfR_to_fasta} and then proceed as in case \code{fasta}. For the last format the \code{seqName} must equal to the \code{DNAStringSet}-object which contains the sequences.
   }
 
   \item{refName}{
