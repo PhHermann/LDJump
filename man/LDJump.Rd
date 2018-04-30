@@ -12,7 +12,7 @@
 LDJump(seqName, alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "",
        format = "fasta", refName = NULL, start = NULL, thth = 0.01,
        constant = F, rescale = F, status = T, polyThres = 0,
-       cores = 1, accept = F, demography = "")
+       cores = 1, accept = F, demography = "", nat = F)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -68,6 +68,9 @@ LDJump(seqName, alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "",
   }
  \item{demography}{
   an optional character value: by default an empty string ("") indicates that the recombination rate estimation is estimated under neutrality. If \code{"b"} the regression model estimated based on samples from populations under a bottleneck is used. If \code{"g"} the regression model estimated based on samples from populations under population growth is used. If \code{"d"}, the regression model estimated based on samples from populations under demography (combination of samples of under growth and bottleneck) is used.
+  }
+  \item{nat}{
+  temporary parameter.
   }
 }
 %%\details{
