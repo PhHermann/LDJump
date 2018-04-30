@@ -16,7 +16,7 @@ LDJump = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pa
     }
     ll = floor(width(s)[1]/segLength)*segLength
     segs = ll/segLength
-    if(!check_continue(seqName, segs = segs, accept)) {return()}
+    if(!check_continue(seqName, segs = segs, accept, format)) {return()}
     system(paste("dos2unix -q ", paste(find.package("LDJump"),"/exec/Sums_LDHat_pack.sh", sep=""), " --quiet", sep = ""))
     # helper = t(sapply(1:segs,summary_statistics,s=s,segLength=segLength,segs = segs, thth=thth,seqName=seqName,nn=nn,pathLDhat = pathLDhat, status = status, polyThres = polyThres))
     # haps = read.table(paste("Confs_part_main.txt",sep=""),sep = ":")[,2]/ll*segs/nn
