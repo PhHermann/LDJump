@@ -5,7 +5,7 @@ LDJump = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pa
     vcfR_to_fasta(seqName, refName, ext.ind = T, cons = F, ext.haps = T, start = start)
   }
   if(format == "fasta") {
-    if(seg.sites(read.dna(file = seqName, format = "fasta", as.matrix = T)) <= 1) {stop("Data does not contain SNPs. Recombination rate cannot be estimated")}
+    if(length(seg.sites(read.dna(file = seqName, format = "fasta", as.matrix = T))) <= 1) {stop("Data does not contain SNPs. Recombination rate cannot be estimated")}
     s = Biostrings::readDNAStringSet(seqName)
   }
   if(format == "DNABin") {
@@ -48,7 +48,7 @@ LDJump = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pa
     # hats = read.table("resLDHats_pairwise_main.txt")[,5]/ll*segs
     # helper = data.frame(cbind(helper,apwd,wath,vapw,hats,haps), row.names = 1:nrow(help))
     helper = data.frame(cbind(helper,apwd,wath,vapw,hats), row.names = 1:nrow(helper))
-    full.list = get_smuce(helper, segs, alpha, quant = quant, ll,rescale = rescale, constant=constant, demography = demography, nat = nat)
+    full.list = get_smuce(helper, segs, alpha, quant = quant, ll,rescale = rescale, constant=constant, demography = demography)
     if(!constant) {
       seq.full.cor = full.list[[1]]; pr.full.cor = full.list[[2]]; ind = full.list[[3]]
       if(length(ind) > 0) {warning(paste("Recombination rates were imputed for the following segments:", toString(ind), sep = ""))}
