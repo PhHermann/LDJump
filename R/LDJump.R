@@ -5,6 +5,7 @@ LDJump = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pa
     vcfR_to_fasta(seqName, refName, ext.ind = T, cons = F, ext.haps = T, start = start)
   }
   if(format == "fasta") {
+    if(seg.sites(read.dna(file = seqName, format = "fasta", as.matrix = T)) <= 1) {stop("Data does not contain SNPs. Recombination rate cannot be estimated")}
     s = Biostrings::readDNAStringSet(seqName)
   }
   if(format == "DNABin") {
