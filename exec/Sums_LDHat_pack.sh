@@ -6,12 +6,13 @@ pathLDhat=$4
 th=$5
 cor=$6
 jobId=$7
-curr=${PWD}
+curr=$(pwd)
 # sed -i "1i $nn $lpart 1" $seqName
-awk -v n=1 -v s="$nn $lpart 1" 'NR == n {print s} {print}' $seqName > "FastaTemp_${jobId}.fa"
-mv "FastaTemp_${jobId}.fa" $seqName
+echo $seqName
+awk -v n=1 -v s="$nn $lpart 1" 'NR == n {print s} {print}' $seqName > ${curr}/"FastaTemp_${jobId}.fa"
+mv ${curr}/"FastaTemp_${jobId}.fa" $seqName
 mkdir -p ${jobId} && cd ${jobId}
-$pathLDhat/convert -seq ../$seqName | tail -n 7 >temp_${jobId}.txt
+$pathLDhat/convert -seq $seqName | tail -n 7 >temp_${jobId}.txt
 cat "temp_${jobId}.txt" >>../"Sums_part_main_${jobId}.txt"
 
 cd $pathLDhat/lk_files
@@ -32,5 +33,3 @@ head -n 5 "${jobId}outfile.txt" | tail -n 1 >"${jobId}temp.txt"
 cat "${jobId}temp.txt" >>../"resLDHats_pairwise_main_${jobId}.txt"
 
 cd .. && rm -rf ${jobId}
-
-
