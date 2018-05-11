@@ -8,6 +8,7 @@ cor=$6
 jobId=$7
 curr=$(pwd)
 # sed -i "1i $nn $lpart 1" $seqName
+<<<<<<< HEAD
 awk -v n=1 -v s="$nn $lpart 1" 'NR == n {print s} {print}' $seqName > ${curr}/"FastaTemp_${jobId}.fa"
 mv ${curr}/"FastaTemp_${jobId}.fa" $seqName
 echo $seqName
@@ -15,6 +16,11 @@ echo ${curr}/$seqName
 mkdir -p ${jobId} && cd ${jobId}
 echo $(pwd)
 $pathLDhat/convert -seq $seqName | tail -n 7 >"temp_${jobId}.txt"
+echo $seqName
+awk -v n=1 -v s="$nn $lpart 1" 'NR == n {print s} {print}' $seqName > ${curr}/"FastaTemp_${jobId}.fa"
+mv ${curr}/"FastaTemp_${jobId}.fa" $seqName
+mkdir -p ${jobId} && cd ${jobId}
+$pathLDhat/convert -seq $seqName | tail -n 7 >temp_${jobId}.txt
 cat "temp_${jobId}.txt" >>../"Sums_part_main_${jobId}.txt"
 
 cd $pathLDhat/lk_files
