@@ -18,7 +18,7 @@ vcfR_to_fasta(seqName, refName = NULL, ext.ind = T, cons = F,
 \arguments{
 \item{seqName}{
 %%     ~~Describe \code{seqName} here~~
-   A character string containing the path and the name of the sequence file in vcf format.
+   A character string containing the full path and the name of the sequence file in vcf format.
 %%     ~~Describe \code{seqName} here~~
 }
   \item{refName}{

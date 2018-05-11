@@ -18,7 +18,7 @@ LDJump(seqName, alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "",
 \arguments{
   \item{seqName}{
 %%     ~~Describe \code{seqName} here~~
-   A character string containing the path and the name of the sequence file in \code{fasta} of \code{vcf} format. In case that \code{format} equals to \code{DNABin} the seqName equals to the name of the \code{DNABin}-object.
+   A character string containing the full path and the name of the sequence file in \code{fasta} of \code{vcf} format. In case that \code{format} equals to \code{DNABin} the seqName equals to the name of the \code{DNABin}-object.
 }
   \item{alpha}{
   A value from the interval (0,1) for the type-I error probability \eqn{\alpha} used in the segmentation algorithm. We recommend to use 0.05. We enabled to estimate the recombination map efficiently (without recalculating all summary statistics) under several type-I errors when \code{LDJump} is applied with a vector of type-I error probabilities.

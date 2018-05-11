@@ -10,8 +10,7 @@ curr=$(pwd)
 # sed -i "1i $nn $lpart 1" $seqName
 awk -v n=1 -v s="$nn $lpart 1" 'NR == n {print s} {print}' $seqName > ${curr}/"FastaTemp_${jobId}.fa"
 mv ${curr}/"FastaTemp_${jobId}.fa" $seqName
-echo $seqName
-echo ${curr}/$seqName
+
 mkdir -p ${jobId} && cd ${jobId}
 echo $(pwd)
 $pathLDhat/convert -seq $seqName | tail -n 7 >"temp_${jobId}.txt"
