@@ -8,7 +8,7 @@ summary_statistics = function(x,s,segLength,segs,seqName,nn,thth,cor = 1,pathLDh
   Biostrings::writeXStringSet(sub, seqNamePart, format = "fasta")
   # system(paste("cp ", seqNamePart, " ", seqNamePartHel, sep = ""))
   if(length(ape::seg.sites(ape::read.FASTA(seqNamePart)))>1){
-    system(paste(paste(find.package("LDJump"),"/exec/Sums_LDHat_pack.sh", sep=""), seqNamePart,nn,ex-ix+1,pathLDhat,thth,cor,x,sep=" "))
+    system(paste(paste(find.package("LDJump"),"/exec/Sums_LDHat_pack.sh", sep=""), seqNamePart,nn,ex-ix+1,pathLDhat,formatC(thth, format = "fg"),cor,x,sep=" "))
     samp = ape::read.dna(seqNamePart, as.matrix = T, format = "fasta") # seqNamePartHel
     tajd = pegas::tajima.test(samp)$D
     temp = try(adegenet::DNAbin2genind(samp, polyThres = polyThres)); hahe = adegenet::Hs(temp);
