@@ -15,12 +15,12 @@ mkdir -p ${jobId} && cd ${jobId}
 $pathLDhat/convert -seq $seqName | tail -n 7 >"temp_${jobId}.txt"
 cat "temp_${jobId}.txt" >>../"Sums_part_main_${jobId}.txt"
 
-cd $pathLDhat/lk_files
-if [ ! -f "lk_n${nn}_t${th}_rh100_npts201.txt" ]; then
-echo "Lookup table is calculated"
-$pathLDhat/complete -n $nn -rhomax 100 -n_pts 201 -theta $th -split $cor
-mv new_lk.txt "lk_n${nn}_t${th}_rh100_npts201.txt"
-fi
+# cd $pathLDhat/lk_files
+# if [ ! -f "lk_n${nn}_t${th}_rh100_npts201.txt" ]; then
+# echo "Lookup table is calculated"
+# $pathLDhat/complete -n $nn -rhomax 100 -n_pts 201 -theta $th -split $cor
+# mv new_lk.txt "lk_n${nn}_t${th}_rh100_npts201.txt"
+# fi
 
 
 # pathLDhat=$(locate LDhat-master | head -n 1)
