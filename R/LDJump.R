@@ -23,7 +23,7 @@ LDJump = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pa
     if(!file.exists(paste0(pathLDhat, "/lk_n", nn, "_t", formatC(thth, format = "fg"), "_rh100_npts201.txt"))) {
      print("Lookup table is calculated")
      system(paste0(pathLDhat, "/complete -n ", nn, " -rhomax 100 -n_pts 201 -theta ", formatC(thth, format = "fg"), " -split ", cores))
-     system(paste0("mv new_lk.txt lk_n", nn, "_t", formatC(thth, format = "fg"), "_rh100_npts201.txt"))
+     system(paste0("mv new_lk.txt ", pathLDhat, "/lk_files/lk_n", nn, "_t", formatC(thth, format = "fg"), "_rh100_npts201.txt"))
     }
 
     if(cores == 1) {
