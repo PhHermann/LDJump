@@ -37,7 +37,10 @@ LDJump = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pa
     named.list <- lapply(l.files, read.table)
     hats = data.table::rbindlist(named.list)
     hats = hats$V5/ll*segs
-    system("rm -f resLDHats_pairwise* Sums_part_main* *_part_*.fa LDJump_Status.txt")
+    system("for f in resLDHats_pairwise*; do rm -f $f; done")
+    system("for f in Sums_part_main*; do rm -f $f; done")
+    system("for f in *_part_*; do rm -f $f; done")
+    system("rm -f LDJump_Status.txt")
     indices = seq(1,nrow(sums),by=6)
     apwd = sums[indices+1,2]/ll*segs
     wath = sums[indices+2,2]/ll*segs
