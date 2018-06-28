@@ -12,7 +12,7 @@
 LDJump(seqName, alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "",
        format = "fasta", refName = NULL, start = NULL, thth = 0.01,
        constant = F, rescale = F, status = T, polyThres = 0,
-       cores = 1, accept = F, demography = "", nat = F)
+       cores = 1, accept = F, demography = F)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
