@@ -1,6 +1,6 @@
 ## Source History
 
-The most recent version of LDJump is 0.1.8. For installation of **LDJump** please see [README.md](README.md) and can be downloaded in this folder. 
+The most recent version of LDJump is 0.2.2 For installation of **LDJump** please see [README.md](README.md) and can be downloaded in this folder. 
 
 ### Update Version 0.1.1.
 The functions *LDJump* and *getSmuce* are extended with a parameter *constant*. 
