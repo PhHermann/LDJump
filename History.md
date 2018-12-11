@@ -37,3 +37,11 @@ We have also simulated under demographic effects and provide a regression model 
 ### Update Version 0.1.10
 Fix issues with paths. *LDJump* should be applied with the full path of the file containing the sequences  (\code{seqName}). Moreover, the function *impute* was rewritten. 
 
+### Update Version 0.2.1
+We have implemented the function *calcRegMod* in order to estimate the regression function for constant estimates under simulated populations with a user input demographic scenario. This function requires the two software packages [scrm](<https://github.com/scrm/scrm>) and [ms2dna](<http://guanine.evolbio.mpg.de/bioBox/ms2dna_1.16.tgz>) to be installed. Therefore, we also included an optional parameter in the main function in oder to apply **LDJump** under the newly trained regression model. 
+
+We added the parameter *out* which enables to specify a string added to the output-files. Hence, it is not required anymore to run *LDJump* from different directories when applying it on several data sets in parallel. 
+
+### Update Version 0.2.2
+We updated the regression models for constant recombination rates in **LDJump** and therefore, also updated all other models such as the bias correction model or the demography model. These models are based on summary statistics computed from among others the software package [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software/>). The computing time of **LDJump** is reduced drastically. Additionally, one can still use [LDhat](<https://github.com/auton1/LDhat>) in order to reduce the runtime of **LDJump**. 
+

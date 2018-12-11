@@ -8,13 +8,13 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-check_continue(seqName, segs, accept)
+check_continue(seqName, segs, accept, format)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{seqName}{
 %%     ~~Describe \code{seqName} here~~
-   A character string containing the path and the name of the sequence file in \code{fasta} of \code{vcf} format.
+     A character string containing the full path and the name of the sequence file in \code{fasta} of \code{vcf} format. It is necessary to add the extension ("fileName.fa", "fileName.fasta", "fileName.vcf") in order to run \code{LDJump}. In case that \code{format} equals to \code{DNABin} the seqName equals to the name of the \code{DNABin}-object (without any extension).
 }
   \item{segs}{
   A (non-negative) integer which reflects the number of segments considered. It is calculated in the program based on the user-defined segment length.
@@ -22,6 +22,9 @@ check_continue(seqName, segs, accept)
 }
   \item{accept}{
   an optional logical value: by default \code{FALSE} and \code{LDJump} checks for segments with less than 2 SNPs and requires user input to proceed. If set to \code{TRUE}, the user accepts that the rates for these segments (<= 1 SNP) are estimated via imputation.
+  }
+  \item{format}{
+  A character string which can be \code{fasta}, \code{vcf}, or \code{DNAStringSet}. If \code{fasta} is used, the package will proceed with the computation of the recombination map. If \code{vcf}, the package will convert the data in \code{vcf} format to \code{fasta} format with the function \code{vcfR_to_fasta} and then proceed as in case \code{fasta}. For the last format the \code{seqName} must equal to the \code{DNABin}-object which contains the sequences.
   }
 }
 %\details{

@@ -11,7 +11,7 @@ Please contact me in case of questions, comments, bug reports, etc...
     E-Mail: philipp.hermann@jku.at
 
 ## Dependencies & System Requirements
-This package makes use of several functions of other R-packages, as well as of [LDhat](<https://github.com/auton1/LDhat>) listed as follows: 
+This package makes use of several functions of other R-packages, as well as of [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software/>), [LDhat](<https://github.com/auton1/LDhat>) (and for simulations  [scrm](<https://github.com/scrm/scrm>) as well as [ms2dna](<http://guanine.evolbio.mpg.de/bioBox/>)) listed as follows: 
 
 * Unix Operating System
 * R (>= 2.10)
@@ -23,10 +23,13 @@ This package makes use of several functions of other R-packages, as well as of [
 * seqinr (>= 3.1-3)
 * quantreg
 * vcfR (>= 1.5.0)
-* LDhat (2.2)
+* PhiPack
+* LDhat (optional, 2.2)
 * snow
+* scrm (1.7.1)
+* ms2dna (1.16)
 
-The uploaded version in *[Sources](./Sources)* and the listed packages need to be installed manually. Notice that **Biostrings** needs to be installed via [Bioconductor](<http://bioconductor.org/packages/release/bioc/html/Biostrings.html>).  [LDhat](<https://github.com/auton1/LDhat>) as well as the functions *dos2unix* and *awk* neeed to be installed too. 
+The uploaded version in *[Sources](./Sources)* and the listed packages need to be installed manually. Notice that **Biostrings** needs to be installed via [Bioconductor](<http://bioconductor.org/packages/release/bioc/html/Biostrings.html>).  [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software/>) as well as the functions *dos2unix* and *awk* neeed to be installed too. Additionally, we recommend to also install [LDhat](<https://github.com/auton1/LDhat>) which will then enable to compute estimates at lower computational cost. The software packages [scrm](<https://github.com/scrm/scrm>) and [ms2dna](<http://guanine.evolbio.mpg.de/bioBox/>)) only need to be installed when the user wants to estimate a regression model based on simulations under a user input demographic scenario, see [Update to Version 0.2.2](###Update to Version 0.2.2).
 
 
 ## Installation
@@ -48,8 +51,8 @@ After loading the package in the workspace one can use the main function *LDJump
 
 ```R
 require(LDJump)
-LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, start = NULL, 
-       thth = 0.01, constant = F, status = T, cores = 1, accept = F, demography = F)
+LDJump(seqName, alpha = 0.05, segLength = 1000, pathLDhat = "", pathPhi = "", format = "fasta", refName = NULL, 
+      start = NULL, constant = F, status = T, cores = 1, accept = F, demography = F, out = "")
 ```
 
 Detailed descriptions of the main functions and all adjacent functions computing the recombination map can be found via e.g.
@@ -58,14 +61,14 @@ Detailed descriptions of the main functions and all adjacent functions computing
 ?LDJump
 ```
 
-We provide examples with files in *[Example](./Example)* in addition to a set of Lookup-tables of LDhat in *[Lookup Tables](./Lookups)*. 
+We provide examples with files in *[Example](./Example)*. Previous versions (before v 2.1) required a set of Lookup-tables of LDhat which can still be found in *[Lookup Tables](./Lookups)*. However, we recommend to update to the most recent verion of **LDJump**. 
 
 **LDJump** can also be used under a set of type I error probabilities alpha. Therefore, the parameter *alpha* needs to be fed with a vector of values such as:
 
 ```R
 require(LDJump)
-LDJump(seqName, alpha = c(0.1, 0.05, 0.01), segLength = 1000, pathLDhat = "", format = "fasta", refName = NULL, 
-       start = NULL, thth = 0.01, constant = F, status = T, cores = 1)
+LDJump(seqName, alpha = c(0.1, 0.05, 0.01), segLength = 1000, pathLDhat = "", pathPhi = "", format = "fasta",
+       refName = NULL, start = NULL, constant = F, status = T, cores = 1)
 ```
 
 **LDJump** is designed to estimate recombination rates from segments containing information (by SNPs). Therefore, the program checks all segments (based on the given segment lengths) for the number of SNPS. In case of segments without SNPs, the program will inform the user and ask for input providing the following two options: 
@@ -84,4 +87,28 @@ An integer parameter *cores* enables to parallelize **LDJump**, where the parame
 
 A logical parameter *demography*, which is *FALSE* by default, enables to estimate the recombination rates using a generalized additive regression model (GAM) which is based on simulated samples of populations undergoing demographic effects. 
 
-We recommend to run **LDJump** from the same path where the sample file is located in order that all created temp files will be deleted after completion.
+### Update to Version 0.2.2
+We have implemented a function *calcRegMod* which computes the regression model for constant estimates by simulating under user defined populations. Therefore, we provide the following example how to obtain the regression  models for populations under a bottleneck followed by rapid growth in population sizes. 
+
+```R
+require(LDJump)
+scenario =  " -eG 0.0 0 -eG 0.42 -100 -eG 0.5 100 "
+simulatedData = calcRegMod(nsim=100,pathToScrm=pathToScrm,scenario=scenario,pathToMs2dna=pathToMs2dna, status = T, pathLDhat = "/path/To/LDhat", pathPhi = "/path/To/Phi")
+regMod = simulatedData[[1]]
+result = LDJump(seqName = "path/To/seqName", pathLDhat = "/path/To/LDhat", pathPhi = "/path/To/Phi", segLength = 1000, alpha = 0.05, status = T, demography = F, regMod = regMod, status = T, accept = T)
+```
+
+Notice that any demographic scenario which is in the range of [scrm](<https://github.com/scrm/scrm/wiki/Command-Line-Options>) can be provided with the simulation function. **However, we want to stress that the resulting model is not checked for its underlying assumptions of the errors. Nevertheless, this can and should be done manually, given that the model is in hand after the simulations.** Moreover, one can also adapt the sample sizes of the populations (n), as well as the sequence lengths of the simulated populations (len). The default values are listed as follows. 
+```R
+n = c(10, 16, 20))
+len = c(500, 1000, 2000, 3000, 5000)
+```
+
+For each combination of sample sizes and sequence lengths 100 recombination rates are simulated (uniformly distributed per interval) for the 5 following intervals: [0,0.01], [0.01,0.02], [0.02, 0.05], [0.05, 0.1], and [0.1, 0.2]. Moreover, we added the option to provide a vector of recombination rates under which the recombination map should be simulated. Then the mentioned setup using intervals is ignored. 
+
+Although we did not explore **LDJump** under other scenarios such as population structure, we note that principially (given its implementation in [scrm](<https://github.com/scrm/scrm/wiki/Command-Line-Options>) it is possible to simulate under any scenario using our *calcRegMod* function. **However, one has to be careful that we did not address other scenarios than the demographic example as provided with the R-package. Hence, one has to be careful with LDJump and self-simulated regression models.**
+
+We added an optional parameter *out* which is a prefix for all outfiles created within **LDJump**. By default it is an empty string, but when changed to any user defined-string, one can run **LDJump** in parallel on several data sets from the same working directory without interfering output files. 
+
+### Recommendations
+We recommend to run **LDJump** from the same path where the sample file is located in order that all created temp files will be deleted after completion. 

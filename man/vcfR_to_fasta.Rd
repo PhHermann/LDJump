@@ -17,12 +17,10 @@ vcfR_to_fasta(seqName, refName = NULL, ext.ind = T, cons = F,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
 \item{seqName}{
-%%     ~~Describe \code{seqName} here~~
-   A character string containing the full path and the name of the sequence file in vcf format.
-%%     ~~Describe \code{seqName} here~~
+   A character string containing the full path and the name of the sequence file. It is necessary to add the extension in order to run \code{LDJump} (seqName = "fileName.vcf").
 }
   \item{refName}{
-  An (optional) path to the reference sequence for the region of interest downloaded from e.g. http://phase3browser.1000genomes.org/index.html. Only to be used in case that \code{format == "vcf"}.
+  An (optional) full path including file name and extension (".vcf") to the reference sequence for the region of interest downloaded from e.g. http://phase3browser.1000genomes.org/index.html. Only to be used in case that \code{format == "vcf"}.
   }
 %%     ~~Describe \code{refName} here~~
   \item{ext.ind}{
@@ -67,7 +65,7 @@ Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{LDJump}}, \code{\link{summary_statistics}}, \code{\link{fgt_rrate_dpr}}, \code{\link{get_smuce}}, \code{\link[vcfR]{vcfR2DNAbin}}
+\code{\link{LDJump}}, \code{\link{summary_statistics}}, \code{\link{getPhi}}, \code{\link{get_smuce}}, \code{\link[vcfR]{vcfR2DNAbin}}
 }
 
 \examples{

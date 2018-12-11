@@ -10,15 +10,15 @@
 }
 \usage{
 LDJump(seqName, alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "",
-       format = "fasta", refName = NULL, start = NULL, thth = 0.01,
-       constant = F, rescale = F, status = T, polyThres = 0,
-       cores = 1, accept = F, demography = F)
+       pathPhi = "", format = "fasta", refName = NULL, start = NULL, constant = F,
+       rescale = F, status = T, polyThres = 0, cores = 1, accept = F,
+       demography = F, regMod = "", out = "")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{seqName}{
 %%     ~~Describe \code{seqName} here~~
-   A character string containing the full path and the name of the sequence file in \code{fasta} of \code{vcf} format. In case that \code{format} equals to \code{DNABin} the seqName equals to the name of the \code{DNABin}-object.
+   A character string containing the full path and the name of the sequence file in \code{fasta} of \code{vcf} format. It is necessary to add the extension ("fileName.fa", "fileName.fasta", "fileName.vcf") in order to run \code{LDJump}. In case that \code{format} equals to \code{DNABin} the seqName equals to the name of the \code{DNABin}-object (without any extension).
 }
   \item{alpha}{
   A value from the interval (0,1) for the type-I error probability \eqn{\alpha} used in the segmentation algorithm. We recommend to use 0.05. We enabled to estimate the recombination map efficiently (without recalculating all summary statistics) under several type-I errors when \code{LDJump} is applied with a vector of type-I error probabilities.
@@ -34,6 +34,9 @@ LDJump(seqName, alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "",
   \item{pathLDhat}{
   A character string containing the path to LDhat. This path and the installation of \href{https://github.com/auton1/LDhat}{LDhat} is necessary for the computation of the package.
   }
+  \item{pathPhi}{
+  A character string containing the path to PhiPack. This path and the installation of \href{https://www.maths.otago.ac.nz/~dbryant/software/PhiPack.tar.gz}{PhiPack} is necessary for the computation of the package.
+  }
 
   \item{format}{
   A character string which can be \code{fasta}, \code{vcf}, or \code{DNAStringSet}. If \code{fasta} is used, the package will proceed with the computation of the recombination map. If \code{vcf}, the package will convert the data in \code{vcf} format to \code{fasta} format with the function \code{vcfR_to_fasta} and then proceed as in case \code{fasta}. For the last format the \code{seqName} must equal to the \code{DNABin}-object which contains the sequences.
@@ -45,9 +48,6 @@ LDJump(seqName, alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "",
   \item{start}{
   An (optional) integer value which reflects the starting position of the sequences in bp. Only to be used in case that \code{format == "vcf"}.
   }
-    \item{thth}{
-  A numeric value for \eqn{\theta} used in the lookup tables of \href{https://github.com/auton1/LDhat}{LDhat}.
-}
     \item{constant}{
   an optional logical value: by default \code{FALSE} estimating variable recombination rates. If \code{TRUE}, the constant recombination rate for the full sequence is estimated.
   }
@@ -69,6 +69,12 @@ LDJump(seqName, alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "",
  \item{demography}{
   an optional logical value: by default \code{FALSE} indicating that the recombination rate estimation is estimated under neutrality. If \code{TRUE} the regression model estimated based on samples from populations under a bottleneck followed by rapid growth is used.
   }
+ \item{regMod}{
+ an optional character string: for the default empty string "" \code{LDJump} uses an existing regression model (constant population size or simple demography example, depending on \code{demography}). In oder to use the regression model estimated by user input demography, then this variable should equal to the name of the regression object. Please see the examples for more details.
+ }
+ \item{out}{
+ an optional character string: by default an empty string "". Can be set to any user-defined string in order to rename all output files used within \code{LDJump}. This parameter enables to run \code{LDJump} from the same directory without creating interfering files in the working directory.
+ }
 }
 %%\details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -91,6 +97,9 @@ For constant recombination rate estimation across the whole sequences (\code{con
 \references{
 Auton, A. and McVean, G. (2007). Recombination rate estimation in the presence
 of hotspots. Genome Research, 17(8), 1219–1227.
+
+Bruen, T. C., Philippe, H., and Bryant, D. (2006). A simple and robust statistical
+test for detecting the presence of recombination. Genetics, 172(4):2665-2681.
 
 Frick, K., Munk, A., and Sieling, H. (2014). Multiscale change-point inference.
 Journal of the Royal Statistical Society: Series B, 76(3), 495–580.
@@ -125,14 +134,14 @@ Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik
 }
 
 \note{
-  This function only works with unix and having \href{https://github.com/auton1/LDhat}{LDhat} (Auton and McVean (2007)) installed. Please properly check all paths to \href{https://github.com/auton1/LDhat}{LDhat} as well as the sequence files.
-  The required lookup tables used by \href{https://github.com/auton1/LDhat}{LDhat} should be located in the path "pathToLDhat/LDhat-master/lk_files". Lookup tables are contained in LDhat, but we also provide several lookup tables \href{https://github.com/PhHermann/LDJump/tree/master/Lookups}{here}.
+  This function only works with unix and having \href{https://www.maths.otago.ac.nz/~dbryant/software/}{PhiPack} installed. We strongly recommend to also install \href{https://github.com/auton1/LDhat}{LDhat} (Auton and McVean (2007)) in order to decrease the computational cost of estimating recombination maps. Please properly check all paths to \href{https://www.maths.otago.ac.nz/~dbryant/software/}{PhiPack} and in case of \href{https://github.com/auton1/LDhat}{LDhat} as well as the sequence files.
+Previous versions (older than v 0.2.1) required lookup tables within the pairwise estimate of \href{https://github.com/auton1/LDhat}{LDhat}. These files should be located in the path "pathToLDhat/LDhat-master/lk_files". Lookup tables are contained in LDhat, but we still provide several lookup tables \href{https://github.com/PhHermann/LDJump/tree/master/Lookups}{here}. We strongly recommend to use the most recent version of \code{LDJump} in order to estimate recombination rates.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{summary_statistics}}, \code{\link{vcfR_to_fasta}}, \code{\link{fgt_rrate_dpr}}, \code{\link{get_smuce}}, \code{\link[stepR]{smuceR}}, \code{\link[quantreg]{rq}}, \code{\link[mgcv]{gam}}, \code{\link[vcfR]{vcfR2DNAbin}}, \code{\link[genetics]{diseq}}, \code{\link[genetics]{genotype}}, \code{\link[Biostrings]{readDNAStringSet}}
+\code{\link{summary_statistics}}, \code{\link{vcfR_to_fasta}}, \code{\link{getPhi}}, \code{\link{get_smuce}}, \code{\link[stepR]{smuceR}}, \code{\link[quantreg]{rq}}, \code{\link[mgcv]{gam}}, \code{\link[vcfR]{vcfR2DNAbin}}, \code{\link[genetics]{diseq}}, \code{\link[genetics]{genotype}}, \code{\link[Biostrings]{readDNAStringSet}}, \code{\link{calcRegMod}}
 }
 
 \examples{
@@ -141,7 +150,7 @@ Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik
 #####                 pathLDhat = getwd(), format = "fasta")          #####
 ##### plot(results)                                              #####
 ##### ab <- system(paste("locate LDhat-master |  head -n 1"), intern = T)   #####
-##### map.tsi.40 = LDJump("S40example.fa", alpha = 0.05, segLength = 1000,  #####
+##### map.tsi.40 = LDJump_new("S40example.fa", alpha = 0.05, segLength = 1000,  #####
 #####                 pathLDhat = ab, format = "fasta")                          #####
 ##### plot(map.tsi.40)                                                      #####
 }
@@ -152,3 +161,4 @@ Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik
 \keyword{datasets}
 \keyword{list}
 \keyword{htest}
+\keyword{datagen}

@@ -25,9 +25,9 @@ This data set contains a generalized additive regression model (\link[mgcv]{gam}
 }
 \examples{
 data(mod.full.demo)
-##### Do not run these examples                         #####
-##### In get_smuce the function is called as follows    #####
-##### pr1 = predict(mod.full.demo,help)                 #####
+##### Do not run these examples                        #####
+##### In get_smuce the function is called as follows   #####
+##### pr1 = predict(mod.full.demo,help)            #####
 }
 \keyword{datasets}
 \keyword{models, regression}

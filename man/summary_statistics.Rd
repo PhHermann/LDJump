@@ -10,8 +10,8 @@ This function computes summary statistics for every segment of the sequence.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-summary_statistics(x, s, segLength, segs, seqName, nn, thth,
-                   cor = 1, pathLDhat, status, polyThres)
+summary_statistics(x, s, segLength, segs, seqName, nn,
+                   pathLDhat, pathPhi, status, polyThres, out)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -32,23 +32,18 @@ An \code{\link[Biostrings]{XStringSet}} object which is read by \code{\link[Bios
 %%     ~~Describe \code{segs} here~~
 }
 \item{seqName}{
-%%     ~~Describe \code{seqName} here~~
-   A character string containing the path and the name of the sequence file in fasta of vcf format.
-%%     ~~Describe \code{seqName} here~~
+   A character string containing the full path and the name of the sequence file in \code{fasta} of \code{vcf} format. It is necessary to add the extension ("fileName.fa", "fileName.fasta", "fileName.vcf") in order to run \code{LDJump}. In case that \code{format} equals to \code{DNABin} the seqName equals to the name of the \code{DNABin}-object (without any extension).
 }
   \item{nn}{
 An integer which reflects the number of individuals (more precisely sequences) of the population to be analyzed. In case of diploid samples this is twice the number of individuals.
 %%     ~~Describe \code{nn} here~~
 }
-  \item{thth}{
-  A numeric value for \eqn{\theta} used in the lookup tables of \href{https://github.com/auton1/LDhat}{LDhat}.
-%%     ~~Describe \code{thth} here~~
-}
-  \item{cor}{
-  An integer value which reflects the number of cores on which \href{https://github.com/auton1/LDhat}{LDhat} should be run. We recommend to keep here 1 core.
-  }
+
   \item{pathLDhat}{
   A character string containing the path to LDhat. This path and the installation of \href{https://github.com/auton1/LDhat}{LDhat} is necessary for the computation of the package.
+  }
+  \item{pathPhi}{
+  A character string containing the path to PhiPack. This path and the installation of \href{https://www.maths.otago.ac.nz/~dbryant/software/PhiPack.tar.gz}{PhiPack} is necessary for the computation of the package.
   }
   \item{status}{
   an optional logical value: by default \code{TRUE} such that the current processing status of the segments is printed.
@@ -56,15 +51,22 @@ An integer which reflects the number of individuals (more precisely sequences) o
   \item{polyThres}{
   a numeric value between 0 and 1. Used in data manipulation function \code{DNAbin2genind}: the minimum frequency of a minor allele for a locus to be considered as polymorphic (default to 0).
   }
+  \item{out}{
+ an optional character string: by default an empty string "". Can be set to any user-defined string in order to rename all output files used within \code{LDJump}. This parameter enables to run \code{LDJump} from the same directory without creating interfering files in the working directory.
+ }
 }
 %%\details{
 %%  ~~ If necessary, more details than the description above ~~
 %%}
 \value{
- This function returns a concatenated vector of two separately used vectors (scalars) of summary statistis as:
-  \item{stats}{A vector of summary statistics. Returned with the value of hahe.}
+ This function returns a concatenated vector of all computed summary statistis as:
   \item{hahe}{The haplotype heterozygosity of the considered segment. Returned with stats.}
   \item{tajd}{Tajima's D. Only used in the regression model for demography.}
+  \item{haps}{The number of haplotypes. Later on it is normalized by sequence length and number of individuals.}
+  \item{apwd}{Average pairwise differences. Later it is normalized by sequence length.}
+  \item{vapw}{Variance of pairwise differences. Later it is normalized by sequence length.}
+  \item{wath}{Watterson's theta. Later it is normalized by sequence length.}
+  \item{phis}{A vector containing the four summary statistics obtained from PhiPack as MaxChi, NSS, mean(Phi) and var(Phi).}
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -75,6 +77,9 @@ An integer which reflects the number of individuals (more precisely sequences) o
 %% ~put references to the literature/web site here ~
 Auton, A. and McVean, G. (2007). Recombination rate estimation in the presence
 of hotspots. Genome Research, 17(8), 1219–1227.
+
+Bruen, T. C., Philippe, H., and Bryant, D. (2006). A simple and robust statistical
+test for detecting the presence of recombination. Genetics, 172(4):2665-2681.
 
 Jombart T. and Ahmed I. (2011) adegenet 1.3-1: new   tools for the analysis of
 genome-wide SNP data. Bioinformatics. doi: 10.1093/bioinformatics/btr521
@@ -98,7 +103,7 @@ Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{LDJump}}, \code{\link{vcfR_to_fasta}}, \code{\link{fgt_rrate_dpr}}, \code{\link{get_smuce}}, \code{\link[Biostrings]{readDNAStringSet}}, \code{\link[adegenet]{DNAbin2genind}}
+\code{\link{LDJump}}, \code{\link{vcfR_to_fasta}}, \code{\link{getPhi}}, \code{\link{get_smuce}}, \code{\link[Biostrings]{readDNAStringSet}}, \code{\link[adegenet]{DNAbin2genind}}
 }
 
 \examples{

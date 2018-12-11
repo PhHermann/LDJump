@@ -11,7 +11,7 @@ First, the recombination rates per segment are computed based on the regression 
     %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-get_smuce(help, segs, alpha, ll, quant = 0.35, rescale, constant, demography)
+get_smuce(help, segs, alpha, ll, quant = 0.35, rescale, constant, demography, regMod)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -45,6 +45,9 @@ get_smuce(help, segs, alpha, ll, quant = 0.35, rescale, constant, demography)
  \item{demography}{
   an optional character value: by default an empty string ("") indicates that the recombination rate estimation is estimated under neutrality. If \code{"b"} the regression model estimated based on samples from populations under a bottleneck is used. If \code{"g"} the regression model estimated based on samples from populations under population growth is used. If \code{"d"}, the regression model estimated based on samples from populations under demography (combination of samples of under growth and bottleneck) is used.
 }
+ \item{regMod}{
+ an optional character string: for the default empty string "" *LDJump* uses an existing regression model (constant population size or simple demography example, depending on \code{demography}). In oder to use the regression model estimated by user input demography, then this variable should equal to the name of the regression object. Please see the examples for more details.
+ }
 }
 %%\details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -74,7 +77,7 @@ Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{LDJump}}, \code{\link{vcfR_to_fasta}}, \code{\link{fgt_rrate_dpr}}, \code{\link{summary_statistics}}, \code{\link[stepR]{stepFit}}, \code{\link[quantreg]{rq}}, \code{\link[mgcv]{gam}}
+\code{\link{LDJump}}, \code{\link{vcfR_to_fasta}}, \code{\link{getPhi}}, \code{\link{summary_statistics}}, \code{\link[stepR]{stepFit}}, \code{\link[quantreg]{rq}}, \code{\link[mgcv]{gam}}
 }
 
 \examples{
