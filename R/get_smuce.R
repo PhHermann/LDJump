@@ -6,7 +6,7 @@ get_smuce = function(help, segs, alpha,ll,quant=0.35,rescale,constant,demography
   if(length(regMod) > 1) {pr1 = predict(object = regMod, newdata = help)}
   pr1[is.na(pr1)] = -1/gam;
   ind.na = is.na(pr1)
-  ind.q = which(seq(0.1, 0.5, by = 0.05) == quant)
+  ind.q = which(round(seq(0.1, 0.5, by = 0.05),2 == quant))
   pr.cor = predict(object = LDJump::list.quantile.regs[[ind.q]], newdata = data.frame(x = pr1)); pr.cor = ifelse(pr.cor < -1/gam, -1/gam, pr.cor)
   pr.cor.nat = (pr.cor*gam+1)^(1/gam)-eps
   help = help[,1:8]
