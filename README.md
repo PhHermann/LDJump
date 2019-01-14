@@ -1,6 +1,6 @@
 # LDJump
 **LDJump** is an R package to estimate variable recombination rates from population genetic data. 
-It is a unix based program (with a necessary installation of [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software/>)), able to estimate the recombination map of sequences in fasta and vcf format. 
+It is a unix based program (with a necessary installation of [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software.html>)), able to estimate the recombination map of sequences in fasta and vcf format. 
 First, the sequences are divided in short segments of user defined length. The constant recombination rate is estimated for every segment with a regression model. 
 This set of estimates is fed in a segmentation algorithm (SMUCE) to estimate the breakpoints of the recombination landscape. A [PDF Manual](./LDJump.pdf) with complete documentation of each function is also available. The preprint of the current working paper can be found [here](<https://doi.org/10.1101/190876>).
 
@@ -11,7 +11,7 @@ Please contact me in case of questions, comments, bug reports, etc...
     E-Mail: philipp.hermann@jku.at
 
 ## Dependencies & System Requirements
-This package makes use of several functions of other R-packages, as well as of the software packages [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software/>) and it can optionally also make use of [LDhat](<https://github.com/auton1/LDhat>) in order to decrease the runtime of **LDJump**. Here we provide a list of used R-packages as well as other software packages: 
+This package makes use of several functions of other R-packages, as well as of the software packages [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software.html>) and it can optionally also make use of [LDhat](<https://github.com/auton1/LDhat>) in order to decrease the runtime of **LDJump**. Here we provide a list of used R-packages as well as other software packages: 
 
 * Unix Operating System
 * R (>= 2.10)
@@ -29,7 +29,7 @@ This package makes use of several functions of other R-packages, as well as of t
 * scrm (1.7.1, optional to train the regression model under different scenarios than considered)
 * ms2dna (1.16, optional to train the regression model under different scenarios than considered)
 
-Notice that **Biostrings** needs to be installed via [Bioconductor](<http://bioconductor.org/packages/release/bioc/html/Biostrings.html>).  [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software/>) as well as the functions *dos2unix* and *awk* neeed to be installed too. Additionally, we recommend to also install [LDhat](<https://github.com/auton1/LDhat>) which will then enable to compute estimates at lower computational cost. The software packages [scrm](<https://github.com/scrm/scrm>) and [ms2dna](<http://guanine.evolbio.mpg.de/bioBox/>)) only need to be installed when the user wants to estimate a regression model based on simulations under a user input demographic scenario, see [Update to Version 0.2.2](<###Update to Version 0.2.2>).
+Notice that **Biostrings** needs to be installed via [Bioconductor](<http://bioconductor.org/packages/release/bioc/html/Biostrings.html>).  [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software.html>) as well as the functions *dos2unix* and *awk* neeed to be installed too. Additionally, we recommend to also install [LDhat](<https://github.com/auton1/LDhat>) which will then enable to compute estimates at lower computational cost. The software packages [scrm](<https://github.com/scrm/scrm>) and [ms2dna](<http://guanine.evolbio.mpg.de/bioBox/>)) only need to be installed when the user wants to estimate a regression model based on simulations under a user input demographic scenario, see [Update to Version 0.2.2](<###Update to Version 0.2.2>).
 
 
 ## Installation
