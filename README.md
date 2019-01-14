@@ -100,7 +100,7 @@ result = LDJump(seqName = "path/To/seqName", pathLDhat = "/path/To/LDhat", pathP
 
 Notice that any demographic scenario which is in the range of [scrm](<https://github.com/scrm/scrm/wiki/Command-Line-Options>) can be provided with the simulation function. **However, we want to stress that the resulting model is not checked for its underlying assumptions of the residuals. Nevertheless, this can and should be done manually, given that the model is in hand after the simulations are performed.** Moreover, one can also adapt the sample sizes of the populations (n), the sequence lengths of the simulated populations (len) and the recombination rates. The default values are listed as follows. 
 ```R
-n = c(10, 16, 20))
+n = c(10, 16, 20)
 len = c(500, 1000, 2000, 3000, 5000)
 ```
 
