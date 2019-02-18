@@ -12,7 +12,7 @@ summary_statistics = function(x,s,segLength,segs,seqName,nn,pathLDhat, pathPhi, 
     tajd = pegas::tajima.test(samp)$D
     temp = try(adegenet::DNAbin2genind(samp, polyThres = polyThres)); hahe = adegenet::Hs(temp);
     if(pathLDhat != "") {system(paste0("sed '1d' ", seqNamePart, " > tmpfile",x,out,".fa"))}
-    phis = getPhi(seqName = paste0("tmpfile",x,out,".fa"), pathPhi = "/programs/PhiPack/Phi", out = paste0(x,out))
+    phis = getPhi(seqName = paste0("tmpfile",x,out,".fa"), pathPhi = pathPhi, out = paste0(x,out))
     haps = length(print(pegas::haplotype(samp)))
     if(pathLDhat == "") {
       s.Dist = Biostrings::stringDist(sub)
