@@ -63,6 +63,8 @@ Detailed descriptions of the main functions and all adjacent functions computing
 
 We provide examples with files in *[Example](./Example)*. Previous versions (before version 0.2.1) required a set of lookup-tables of [LDhat](<https://github.com/auton1/LDhat>) which can still be found in *[Lookup Tables](./Lookups)*. However, we recommend to update to the most recent version of **LDJump**. 
 
+A full path to the *Phi* file of [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software.html>) needs to be provided as follows *pathPhi = "/path/to/Phi"*. In order to use [LDhat](<https://github.com/auton1/LDhat>) to quickly calculate some of the summary statistics please set *pathLDhat = "/path/to/LDhat-master"*.
+
 **LDJump** can also be used under a set of type I error probabilities alpha. Therefore, the parameter *alpha* can also be fed with a vector of values such as:
 
 ```R
