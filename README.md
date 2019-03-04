@@ -116,4 +116,4 @@ We added an optional parameter *out* which is a prefix for all outfiles created 
 We recommend to run **LDJump** from the same path where the sample file is located in order that all created temp files will be deleted after completion. 
 
 # Reference 
-Hermann, P., Heissl, A., Tiemann‐Boege, I., and Futschik, A. (2019), LDJump: Estimating Variable Recombination Rates from Population Genetic Data. Mol Ecol Resour. [doi:10.1111/1755-0998.12994](<doi:10.1111/1755-0998.12994>)
+Hermann, P., Heissl, A., Tiemann‐Boege, I., and Futschik, A. (2019), LDJump: Estimating Variable Recombination Rates from Population Genetic Data. Mol Ecol Resour. [doi:10.1111/1755-0998.12994](<https://onlinelibrary.wiley.com/doi/abs/10.1111/1755-0998.12994?af=R>). 
