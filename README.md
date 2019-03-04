@@ -2,7 +2,7 @@
 **LDJump** is an R package to estimate variable recombination rates from population genetic data. 
 It is a unix based program (with a necessary installation of [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software.html>)), able to estimate the recombination map of sequences in fasta and vcf format. 
 First, the sequences are divided in short segments of user defined length. The constant recombination rate is estimated for every segment with a regression model. 
-This set of estimates is fed in a segmentation algorithm (SMUCE) to estimate the breakpoints of the recombination landscape. A [PDF Manual](./LDJump.pdf) with complete documentation of each function is also available. The preprint of the current working paper can be found [here](<https://doi.org/10.1101/190876>).
+This set of estimates is fed in a segmentation algorithm (SMUCE) to estimate the breakpoints of the recombination landscape. A [PDF Manual](./LDJump.pdf) with complete documentation of each function is also available. The paper introducing **LDJump** can be found [here](<https://onlinelibrary.wiley.com/doi/abs/10.1111/1755-0998.12994?af=R>).
 
 ### Author (Requests)
 Please contact me in case of questions, comments, bug reports, etc...
@@ -114,3 +114,6 @@ We added an optional parameter *out* which is a prefix for all outfiles created 
 
 ### Recommendations
 We recommend to run **LDJump** from the same path where the sample file is located in order that all created temp files will be deleted after completion. 
+
+# Reference 
+Hermann, P., Heissl, A., Tiemann‐Boege, I., and Futschik, A. (2019), LDJump: Estimating Variable Recombination Rates from Population Genetic Data. Mol Ecol Resour. [doi:10.1111/1755-0998.12994](<doi:10.1111/1755-0998.12994>)
