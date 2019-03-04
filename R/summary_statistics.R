@@ -11,8 +11,13 @@ summary_statistics = function(x,s,segLength,segs,seqName,nn,pathLDhat, pathPhi, 
     samp = ape::read.dna(seqNamePart, as.matrix = T, format = "fasta")
     tajd = pegas::tajima.test(samp)$D
     temp = try(adegenet::DNAbin2genind(samp, polyThres = polyThres)); hahe = adegenet::Hs(temp);
-    if(pathLDhat != "") {system(paste0("sed '1d' ", seqNamePart, " > tmpfile",x,out,".fa"))}
-    phis = getPhi(seqName = paste0("tmpfile",x,out,".fa"), pathPhi = pathPhi, out = paste0(x,out))
+    if(pathLDhat != "") {
+      system(paste0("sed '1d' ", seqNamePart, " > tmpfile",x,out,".fa"))
+      phis = getPhi(seqName = paste0("tmpfile",x,out,".fa"), pathPhi = pathPhi, out = paste0(x,out))
+    } else {
+      phis = getPhi(seqName = seqNamePart, pathPhi = pathPhi, out = paste0(x,out))
+    }
+
     haps = length(print(pegas::haplotype(samp)))
     if(pathLDhat == "") {
       s.Dist = Biostrings::stringDist(sub)
@@ -34,6 +39,6 @@ summary_statistics = function(x,s,segLength,segs,seqName,nn,pathLDhat, pathPhi, 
       print(paste0(round((nrow(read.table(paste0("LDJump_Status",out,".txt")))+1)/segs*100, 2), "% of Segments calculated"))
     }
   }
-  system(paste0("rm ", seqNamePart))
+  if(file.exists(seqNamePart)) {system(paste0("rm ", seqNamePart))}
   return(c(hahe, tajd, haps, apwd, vapw, wath, phis))
 }
