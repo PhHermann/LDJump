@@ -37,7 +37,8 @@ The ZIP-File of the package can be downloaded via "Clone or download" as well as
 
 ```markdown
 git clone https://github.com/PhHermann/LDJump.git
-R CMD INSTALL LDJump
+R CMD build LDJump
+R CMD INSTALL LDJump_<version>.tar.gz
 ``` 
 
 Using *R* one can also install the *.tar.gz* file with the following command: 
