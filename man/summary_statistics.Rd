@@ -82,7 +82,11 @@ Bruen, T. C., Philippe, H., and Bryant, D. (2006). A simple and robust statistic
 test for detecting the presence of recombination. Genetics, 172(4):2665-2681.
 
 Jombart T. and Ahmed I. (2011) adegenet 1.3-1: new   tools for the analysis of
-genome-wide SNP data. Bioinformatics. doi: 10.1093/bioinformatics/btr521
+genome-wide SNP data. Bioinformatics. \href{https://academic.oup.com/bioinformatics/article/27/21/3070/218892}{doi:10.1093/bioinformatics/btr521}
+
+Hermann, P., Heissl, A., Tiemann-Boege, I., and Futschik, A. (2019), LDJump:
+Estimating Variable Recombination Rates from Population Genetic Data.
+Mol Ecol Resour. \href{https://onlinelibrary.wiley.com/doi/abs/10.1111/1755-0998.12994?af=R}{doi:10.1111/1755-0998.12994}.
 
 McVean, G. A. T., Myers, S. R., Hunt, S., Deloukas, P., Bentley, D. R., and Donnelly,
 P. (2004). The fine-scale structure of recombination rate variation in the human

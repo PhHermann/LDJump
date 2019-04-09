@@ -11,7 +11,7 @@ Please contact me in case of questions, comments, bug reports, etc...
     E-Mail: philipp.hermann@jku.at
 
 ## Dependencies & System Requirements
-This package makes use of several functions of other R-packages, as well as of the software packages [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software.html>) and it can optionally also make use of [LDhat](<https://github.com/auton1/LDhat>) in order to decrease the runtime of **LDJump**. Here we provide a list of used R-packages as well as other software packages: 
+This package makes use of several functions of other R-packages, of the software package [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software.html>), and it can optionally also make use of [LDhat](<https://github.com/auton1/LDhat>) in order to decrease the runtime of **LDJump**. Here we provide a list of used R-packages, as well as, other software packages: 
 
 * Unix Operating System
 * R (>= 2.10)

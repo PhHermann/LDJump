@@ -66,6 +66,11 @@ Journal of the Royal Statistical Society: Series B, 76(3), 495–580.
 
 Futschik, A., Hotz, T., Munk, A., and Sieling, H. (2014). Multiscale DNA
 partitioning: Statistical evidence for segments. Bioinformatics, 30(16), 2255–2262.
+
+Hermann, P., Heissl, A., Tiemann-Boege, I., and Futschik, A. (2019), LDJump:
+Estimating Variable Recombination Rates from Population Genetic Data.
+Mol Ecol Resour. \href{https://onlinelibrary.wiley.com/doi/abs/10.1111/1755-0998.12994?af=R}{doi:10.1111/1755-0998.12994}.
+
 }
 \author{
 Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik

@@ -43,35 +43,41 @@ calcRegMod(n = c(10,16,20), len = c(500,1000,2000,3000,5000), thth = 0.01, nsim 
 }
 \references{
 Auton, A. and McVean, G. (2007). Recombination rate estimation in the presence
-of hotspots. Genome Research, 17(8), 1219–1227.
+of hotspots. Genome Research, 17(8), 1219-1227.
+
+Bruen, T. C., Philippe, H., and Bryant, D. (2006). A simple and robust statistical
+test for detecting the presence of recombination. Genetics, 172(4):2665-2681.
 
 Frick, K., Munk, A., and Sieling, H. (2014). Multiscale change-point inference.
-Journal of the Royal Statistical Society: Series B, 76(3), 495–580.
+Journal of the Royal Statistical Society: Series B, 76(3), 495-580.
 
 Futschik, A., Hotz, T., Munk, A., and Sieling, H. (2014). Multiscale DNA
-partitioning: Statistical evidence for segments. Bioinformatics, 30(16), 2255–2262.
+partitioning: Statistical evidence for segments. Bioinformatics, 30(16), 2255-2262.
+
+Hermann, P., Heissl, A., Tiemann-Boege, I., and Futschik, A. (2019), LDJump:
+Estimating Variable Recombination Rates from Population Genetic Data.
+Mol Ecol Resour. \href{https://onlinelibrary.wiley.com/doi/abs/10.1111/1755-0998.12994?af=R}{doi:10.1111/1755-0998.12994}.
 
 Jombart T. and Ahmed I. (2011) adegenet 1.3-1: new   tools for the analysis of
-genome-wide SNP data. Bioinformatics. doi: 10.1093/bioinformatics/btr521
+genome-wide SNP data. Bioinformatics. \href{https://academic.oup.com/bioinformatics/article/27/21/3070/218892}{doi:10.1093/bioinformatics/btr521}
 
 Knaus BJ and Grünwald NJ (2017). VCFR: a package to manipulate and visualize
 variant call format data in R. Molecular Ecology Resources, 17(1), pp. 44-53.
-ISSN 757, <URL:http://dx.doi.org/10.1111/1755-0998.12549>.
+ISSN 757, \href{http://dx.doi.org/10.1111/1755-0998.12549}{doi:10.1111/1755-0998.12549}.
 
 McVean, G. A. T., Myers, S. R., Hunt, S., Deloukas, P., Bentley, D. R., and Donnelly,
 P. (2004). The fine-scale structure of recombination rate variation in the human
-genome. Science, 304(5670), 581–584.
+genome. Science, 304(5670), 581-584.
 
 Paradis E., Claude J. & Strimmer K. 2004. APE:  analyses of phylogenetics and evolution
 in R language. Bioinformatics 20: 289-290.
 
 The 1000 Genomes Project Consortium (2015). Aglobal reference for human genetic
-variation. Nature, 526(7571), 68–74.
+variation. Nature, 526(7571), 68-74.
 
 Wood, S.N. (2011) Fast stable restricted maximum   likelihood and marginal
 likelihood estimation of semiparametric generalized linear models.
 Journal of the Royal Statistical Society (B) 73(1):3-36
-
 }
 \author{
 Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik
