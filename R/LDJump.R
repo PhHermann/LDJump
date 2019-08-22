@@ -1,11 +1,11 @@
-LDJump = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "", pathPhi = "", format = "fasta", refName = NULL, start = NULL, constant = F, rescale = F, status = T, polyThres = 0, cores = 1, accept = F, demography = F, regMod = "", out = "") {
+LDJump = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "", pathPhi = "", format = "fasta", refName = NULL, start = NULL, constant = F, rescale = F, status = T, polyThres = 0, cores = 1, accept = F, demography = F, regMod = "", out = "", lengthofseq = NULL, chr = NULL, startofseq = NULL, endofseq = NULL) {
   if(pathPhi == "") {stop("Please provide the path of PhiPack. Beware that this package requires PathPhi to be installed for usage.")}
   if(seqName == "") {stop("Please provide the path of the sequence files in fasta/vcf format.")}
   if(format == "vcf") {
-    vcfR_to_fasta(seqName, refName, ext.ind = T, cons = F, ext.haps = T, start = start)
-    seqName = paste0(substr(seqName, 1, nchar(seqName)-4), ".fa")
-    format = "fasta"
-  }
+    
+    dir.create("temp")  
+    return(vcf_statistics(seqName, alpha, quant, segLength, pathLDhat, pathPhi, format, refName, start, constant, rescale, status, polyThres, cores, accept, demography, regMod, out, lengthofseq, chr, startofseq, endofseq))
+    }
   if(format == "fasta") {
     if(length(ape::seg.sites(ape::read.dna(file = seqName, format = "fasta", as.matrix = T))) <= 1) {return("Data does not contain SNPs. Recombination rate cannot be estimated")}
     s = Biostrings::readDNAStringSet(seqName)
