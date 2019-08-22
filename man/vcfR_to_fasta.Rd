@@ -12,7 +12,8 @@ This function enables to read vcfR files and convert them to necessary fasta fil
 }
 \usage{
 vcfR_to_fasta(seqName, refName = NULL, ext.ind = T, cons = F,
-              ext.haps = T, start = NULL)
+              ext.haps = T, start = NULL, ref= NULL, fa_start = NULL,
+              fa_end = NULL, attr_name = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,7 +21,9 @@ vcfR_to_fasta(seqName, refName = NULL, ext.ind = T, cons = F,
    A character string containing the full path and the name of the sequence file. It is necessary to add the extension in order to run \code{LDJump} (seqName = "fileName.vcf").
 }
   \item{refName}{
-  An (optional) full path including file name and extension (".vcf") to the reference sequence for the region of interest downloaded from e.g. http://phase3browser.1000genomes.org/index.html. Only to be used in case that \code{format == "vcf"}.
+  An (optional) full path including file name and extension (".vcf") to the reference sequence
+  for the region of interest downloaded from e.g. http://phase3browser.1000genomes.org/index.html.
+  Only to be used in case that \code{format == "vcf"}.
   }
 %%     ~~Describe \code{refName} here~~
   \item{ext.ind}{
@@ -38,6 +41,22 @@ vcfR_to_fasta(seqName, refName = NULL, ext.ind = T, cons = F,
   \item{start}{
   An (optional) integer value which reflects the starting position of the sequences in bp. Only to be used in case that \code{format == "vcf"}.
 }
+  \item{ref}{
+ A character string describing the name of the reference sequence. If the working directory is not set to the location of the file, the complete path to the file has to be provided g.e. ref = "/home/LDJump/refseq.fa". The reference sequence is needed as it is used together with the vcfR-package to convert each VCF-segment into a FASTA-file.
+  }
+  \item{fa_start}{
+ An integer value used to subset the reference sequence when converting VCF-segments to FASTA. It doesn't have to be provided in the function call, but rather it is initialized and computed inside the function \code{vcf_statistics}.
+  }
+   \item{fa_end}{
+ An integer value used to subset the reference sequence when converting VCF-segments to FASTA. It doesn't have to be provided in the function call, but rather it is initialized and computed inside the function \code{vcf_statistics}.
+   }
+   \item{attr_name}{
+ A character string describing the chromosome number of the reference file. For example,
+ we have a FASTA-header ">21 dna:chromosome:GRCh37:21:41000000:41010000:1" in our reference file,
+ which describes our file to be a segment of chromosome 21, ranging from 41000000 to 41010000.
+ In \code{vcf_statistics}, we use this information to retrieve the chromosome number "21"
+ for the conversion step.
+   }
 }
 
 %%\details{
@@ -56,7 +75,8 @@ Knaus BJ and Grünwald NJ (2017). VCFR: a package to manipulate and visualize va
 http://dx.doi.org/10.1111/1755-0998.12549>.
 }
 \author{
-Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik
+Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik,
+Fardokhtsadat Mohammadi \email{fardokht.fm@gmail.com}
 }
 %%\note{
 %%  ~~further notes~~
