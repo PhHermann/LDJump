@@ -1,4 +1,4 @@
-vcfR_to_fasta = function(seqName, refName = NULL, ext.ind = T, cons = F, ext.haps = T, start = NULL, , ref = NULL, fa_start= NULL, fa_end = NULL, attr_name = NULL) {
+vcfR_to_fasta = function(seqName, refName = NULL, ext.ind = T, cons = F, ext.haps = T, start = NULL, ref = NULL, fa_start= NULL, fa_end = NULL, attr_name = NULL) {
 
   pop = vcfR::read.vcfR(file = seqName, limit = 1e+07, nrows = -1, skip = 0, cols = NULL, convertNA = F, verbose = T)
   
