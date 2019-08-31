@@ -71,6 +71,4 @@ vcf_statistics = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 
       pr.full.cor = full.list[[1]]
       return(list("Constant estimates" = pr.full.cor, "Summary Statistics" = helper_new, "alpha" = alpha, "Sample Size" = nn, "Sequence Length" = ll, "Segment Length" = segLength))
     }
-  }
-}
 }
