@@ -24,7 +24,8 @@ for(nn in n) {
 colNam = colnames(data.all)
 data.all = data.frame(matrix(unlist(data.all), ncol = 10, byrow = F))
 colnames(data.all) = colNam
-data.all$fr = (data.all$fr^0.25-1)/0.25
-regMod = gam(fr~haps+I(haps^2)+s(vapw)+s(apwd)+s(hahe)+s(wath)+s(MaxChi)+s(NSS)+s(phi.mean)+s(phi.var)+s(tajd),data=data.all,family = gaussian(),select = T)
+gamma = 0.5; eps = 0
+data.all$fr = ((data.all$fr+eps)^gamma - 1)/gamma
+regMod = gam(fr~s(haps)+s(vapw)+s(apwd)+s(hahe)+s(wath)+s(MaxChi)+s(NSS)+s(tajd),data=data.all,family = gaussian(),select = T)
 return(list(regMod = regMod, data = data.all))
 }
