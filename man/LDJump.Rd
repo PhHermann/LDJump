@@ -12,7 +12,8 @@
 LDJump(seqName, alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "",
        pathPhi = "", format = "fasta", refName = NULL, start = NULL, constant = F,
        rescale = F, status = T, polyThres = 0, cores = 1, accept = F,
-       demography = F, regMod = "", out = "")
+       demography = F, regMod = "", out = "", lengthofseq = NULL, chr = NULL,
+       startofseq = NULL, endofseq = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -75,6 +76,19 @@ LDJump(seqName, alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "",
  \item{out}{
  an optional character string: by default an empty string "". Can be set to any user-defined string in order to rename all output files used within \code{LDJump}. This parameter enables to run \code{LDJump} from the same directory without creating interfering files in the working directory.
  }
+ \item{lengthofseq}{
+ an integer value describing the length of the sequence (Only required when running \code{LDJump} with VCF-Files). It is used to compute the number of segments and to loop through each segment.
+ }
+ \item{chr}{
+ either an integer value between 1-22 or a character value "X"/"Y" describing which chromosome is used to run \code{LDJump} on (Only required when running \code{LDJump} with VCF-Files). It is required for the \code{vcftools} system call in order to slice the VCF-File into several segments.
+ }
+ \item{startofseq}{
+ an integer value describing at which position the sequence to be analyzed starts (Only required when running \code{LDJump} with VCF-Files). The starting value is provided to \code{vcftools} to select the appropriate range for splicing the VCF-File into segments.
+ }
+ \item{endofseq}{
+ an integer value describing at which position the sequence to be analyzed ends (Only required when running \code{vcftools} with VCF-Files).The ending value is provided to \code{vcftools} to select the appropriate range for splicing the VCF-File into segments.
+ }
+
 }
 %%\details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -134,7 +148,8 @@ Journal of the Royal Statistical Society (B) 73(1):3-36
 
 }
 \author{
-Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik
+Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik,
+Fardokhtsadat Mohammadi \email{fardokht.fm@gmail.com}
 }
 
 \note{

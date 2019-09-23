@@ -11,7 +11,7 @@ This function computes summary statistics for every segment of the sequence.
 }
 \usage{
 summary_statistics(x, s, segLength, segs, seqName, nn,
-                   pathLDhat, pathPhi, status, polyThres, out)
+                   pathLDhat, pathPhi, status, polyThres, out, format, startofseq)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -53,6 +53,12 @@ An integer which reflects the number of individuals (more precisely sequences) o
   }
   \item{out}{
  an optional character string: by default an empty string "". Can be set to any user-defined string in order to rename all output files used within \code{LDJump}. This parameter enables to run \code{LDJump} from the same directory without creating interfering files in the working directory.
+ }
+ \item{format}{
+ a character string describing the format of the used file g.e. "fasta" or "vcf". The default is set to "fasta".
+ }
+ \item{startofseq}{
+ an integer value describing at which position the sequence to be analyzed starts (Only required when running \code{LDJump} with VCF-Files). The starting value is provided to \code{vcftools} to select the appropriate range for splicing the VCF-File into segments. In \code{summary_statistics}, the same value is used to loop over each FASTA-segment.
  }
 }
 %%\details{
@@ -98,7 +104,8 @@ in R language. Bioinformatics 20: 289-290.
 
 }
 \author{
-Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik
+Philipp Hermann \email{philipp.hermann@jku.at}, Andreas Futschik,
+Fardokhtsadat Mohammadi \email{fardokht.fm@gmail.com}
 }
 %%\note{
 %%  ~~further notes~~

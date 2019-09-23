@@ -1,8 +1,15 @@
-summary_statistics = function(x,s,segLength,segs,seqName,nn,pathLDhat, pathPhi, status, polyThres, out) {
-  ix = 1+(x-1)*segLength; ex = x*segLength
-  sub = Biostrings::subseq(s, start = 1+(x-1)*segLength, end=x*segLength)
-  seqNamePart    = paste(Biostrings::substring(seqName,1,nchar(seqName)-3),"_part_",x,out,".fa",sep="")
-  Biostrings::writeXStringSet(sub, seqNamePart, format = "fasta")
+summary_statistics = function(x,s,segLength,segs,seqName,nn,pathLDhat, pathPhi, status, polyThres, out, format = "fasta", startofseq) {
+  if(format != "vcf"){
+    ix = 1+(x-1)*segLength; ex = x*segLength
+    sub = Biostrings::subseq(s, start = 1+(x-1)*segLength, end=x*segLength)
+    seqNamePart    = paste(Biostrings::substring(seqName,1,nchar(seqName)-3),"_part_",x,out,".fa",sep="")
+    Biostrings::writeXStringSet(sub, seqNamePart, format = "fasta")
+  } else {
+    ix =  startofseq + (x-1) * segLength + if((x-1)==0){0}else{1}
+    ex = ix + segLength - if((x-1)==0){0}else{1}
+    seqNamePart = paste0("temp/sel_", as.integer(ix), "_", as.integer(ex), ".recode.vcf.fasta")
+    sub = Biostrings::readDNAStringSet(seqNamePart)
+     }
   if(length(ape::seg.sites(ape::read.FASTA(seqNamePart)))>1){
     if(pathLDhat != "") {
       system(paste(paste0(find.package("LDJump"),"/exec/Sums_LDHat_pack.sh"),seqNamePart,nn,ex-ix+1,pathLDhat,x,out,sep=" "))
@@ -13,9 +20,9 @@ summary_statistics = function(x,s,segLength,segs,seqName,nn,pathLDhat, pathPhi, 
     temp = try(adegenet::DNAbin2genind(samp, polyThres = polyThres)); hahe = adegenet::Hs(temp);
     if(pathLDhat != "") {
       system(paste0("sed '1d' ", seqNamePart, " > tmpfile",x,out,".fa"))
-      phis = getPhi(seqName = paste0("tmpfile",x,out,".fa"), pathPhi = pathPhi, out = paste0(x,out))
+      phis = LDJump::getPhi(seqName = paste0("tmpfile",x,out,".fa"), pathPhi = pathPhi, out = paste0(x,out))
     } else {
-      phis = getPhi(seqName = seqNamePart, pathPhi = pathPhi, out = paste0(x,out))
+      phis = LDJump::getPhi(seqName = seqNamePart, pathPhi = pathPhi, out = paste0(x,out))
     }
 
     haps = length(print(pegas::haplotype(samp)))

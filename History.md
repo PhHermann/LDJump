@@ -43,5 +43,8 @@ We have implemented the function *calcRegMod* in order to estimate the regressio
 We added the parameter *out* which enables to specify a string added to the output-files. Hence, it is not required anymore to run *LDJump* from different directories when applying it on several data sets in parallel. 
 
 ### Update Version 0.2.2
-We updated the regression models for constant recombination rates in **LDJump** and therefore, also updated all other models such as the bias correction model or the demography model. These models are based on summary statistics computed from among others the software package [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software/>). The computing time of **LDJump** is reduced drastically. Additionally, one can still use [LDhat](<https://github.com/auton1/LDhat>) in order to reduce the runtime of **LDJump**. 
+We updated the regression models for constant recombination rates in **LDJump** and therefore, also updated all other models such as the bias correction model or the demography model. These models are based on summary statistics computed from among others the software package [PhiPack](<https://www.maths.otago.ac.nz/~dbryant/software/>). The computing time of **LDJump** is reduced drastically. Additionally, one can still use [LDhat](<https://github.com/auton1/LDhat>) in order to reduce the runtime of **LDJump**.
+
+### Update Version 0.3.1
+In this update, we added an extension *vcf_to_fasta* which allows **LDJump** to receive and work with VCF-files. Because of this adjustment, major changes and debugging have been done in other functions of **LDJump**, such as *LDJump*, *summary_statistics*, *vcfR_to_fasta*. Additionally, a new function *vcf_statistics* has been created, which is the main working unit when using VCF-files. The new update also allows the user to parallelize and therefore shorten the running time when working with VCF-files. 
 
