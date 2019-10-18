@@ -139,7 +139,7 @@ chr = 21
 A possible command on running LDJump looks like this: 
 
 ```R
-LDJump(vcf_file, chr = chr , segLength = 1000, cores = 8, pathPhi = "/home/roots/anaconda3/bin/Phi", format = "vcf", refName = ref_seq, lengthofseq=10000, startofseq = startofseq, endofseq = endofseq)
+LDJump(vcf_file, chr = chr , segLength = 1000, cores = 8, pathPhi = "/path/To/Phi", format = "vcf", refName = ref_seq, lengthofseq=10000, startofseq = startofseq, endofseq = endofseq)
 ```
 
 As it is mentioned above, other parameters such as *segLength, cores, pathPhi* are being used, which are generally necessary and can be referred to in the usual [LDJump documentation](./LDJump.pdf). 
