@@ -2,7 +2,11 @@ LDJump = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pa
   if(pathPhi == "") {stop("Please provide the path of PhiPack. Beware that this package requires PathPhi to be installed for usage.")}
   if(seqName == "") {stop("Please provide the path of the sequence files in fasta/vcf format.")}
   if(format == "vcf") {
-    
+    if(dir.exists(file.path(getwd(), "temp")) == T){
+      answer <- menu(c("Yes", "No"), title = "In your working directory, there already exists a folder named \"temp\". Are you willing to delete it?")
+      if(answer == 1){system(paste0("rm -r temp/"))}
+      if(answer == 2){stop("Please consider deleting or renaming your current \"temp\" and then run LDJump again.")}
+    }
     dir.create("temp")  
     return(vcf_statistics(seqName, alpha, quant, segLength, pathLDhat, pathPhi, format, refName, start, constant, rescale, status, polyThres, cores, accept, demography, regMod, out, lengthofseq, chr, startofseq, endofseq))
     }
