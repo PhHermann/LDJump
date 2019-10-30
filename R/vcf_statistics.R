@@ -1,6 +1,6 @@
 vcf_statistics = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 1000, pathLDhat = "", pathPhi = "", format = NULL, refName = NULL, start = NULL, constant = F, rescale = F, status = T, polyThres = 0, cores = 1, accept = F, demography = F, regMod = "", out = "", lengthofseq=NA, chr = NA, startofseq = NA, endofseq = NA) {
   
-  segs <- ceiling(lengthofseq/segLength)
+  segs <- floor(lengthofseq/segLength)
   y <- 0
   ref = seqinr::read.fasta(file = refName)
   attr_name = attributes(ref)$names
@@ -10,7 +10,7 @@ vcf_statistics = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 
   ll = lengthofseq
   
   
-  for (x in 1:segs){
+  for (x in 1:(segs+1)){
     ix =  startofseq + (x-1) * segLength + y
     ex = ix + segLength - y
     
@@ -18,7 +18,10 @@ vcf_statistics = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 
     
     fa_start= (x-1) * segLength + y
     fa_end = fa_start + segLength -y
-    
+    if(x == (segs+1)){
+      ix = startofseq + (x-1) * segLength + y; ex = endofseq
+      fa_start = (x-1) * segLength + y; fa_end = fa_start + (lengthofseq-fa_start)
+    }
     system(paste0("vcftools --gzvcf ", seqName, " --chr ", chr, " --from-bp ", as.integer(ix), " --to-bp ", as.integer(ex), "_sel.id --recode --recode-INFO-all --out ", "temp/sel_", as.integer(ix), "_", as.integer(ex)))
     vcfR_to_fasta(paste0("temp/sel_", as.integer(ix), "_", as.integer(ex), ".recode.vcf"), ref = ref, start = as.integer(ix), fa_start = fa_start, fa_end = fa_end, attr_name = attr_name)
     fastaName <- paste0("temp/sel_", as.integer(ix), "_", as.integer(ex), ".recode.vcf.fasta")
