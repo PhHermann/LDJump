@@ -5,7 +5,7 @@ First, the sequences are divided in short segments of user defined length. The c
 This set of estimates is fed in a segmentation algorithm (SMUCE) to estimate the breakpoints of the recombination landscape. A [PDF Manual](./LDJump.pdf) with complete documentation of each function is also available. The publication introducing **LDJump** can be found [here](<https://onlinelibrary.wiley.com/doi/abs/10.1111/1755-0998.12994?af=R>).
 
 ### Author (Requests)
-Please contact me in case of questions, comments, bug reports, etc...
+Please contact us in case of questions, comments, bug reports, etc...
 
     Author: Philipp Hermann, Fardokhtsadat Mohammadi
     E-Mail: philipp.hermann@jku.at, fardokht.fm@gmail.com
