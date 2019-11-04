@@ -22,6 +22,7 @@ vcf_statistics = function(seqName = "", alpha = 0.05, quant = 0.35, segLength = 
       ix = startofseq + (x-1) * segLength + y; ex = endofseq
       fa_start = (x-1) * segLength + y; fa_end = fa_start + (lengthofseq-fa_start)
     }
+    if((ex-ix)<1){next}
     system(paste0("vcftools --gzvcf ", seqName, " --chr ", chr, " --from-bp ", as.integer(ix), " --to-bp ", as.integer(ex), "_sel.id --recode --recode-INFO-all --out ", "temp/sel_", as.integer(ix), "_", as.integer(ex)))
     vcfR_to_fasta(paste0("temp/sel_", as.integer(ix), "_", as.integer(ex), ".recode.vcf"), ref = ref, start = as.integer(ix), fa_start = fa_start, fa_end = fa_end, attr_name = attr_name)
     fastaName <- paste0("temp/sel_", as.integer(ix), "_", as.integer(ex), ".recode.vcf.fasta")
